@@ -1,0 +1,135 @@
+
+body{
+  background-color: #cdc9c3;
+}
+.top_bar{
+  width: 100%;
+  min-width: 1050px;
+  height: 55px;
+  background-color: #ee6f57;
+  border-bottom: 0.25em solid #f08a5d;
+  margin-bottom: 10px;
+  display: inline-flex;
+  z-index: 10;
+}
+
+.back{
+  background-color: #d9e4dd;
+  position: relative;
+  top: 15px;
+
+
+}
+
+.imagenes{
+  width: 40px;
+}
+
+.column{
+  background-color: #f7dad9;
+  padding: 10px;
+  border: 1px solid #fbf7f0;
+  border-radius: 10px;
+  box-shadow: 2px 2px 1px #968c83;
+
+}
+
+.users{
+  width: 25%;
+  float: left;
+  margin-bottom: 20px;
+  margin-left: 3%;
+
+}
+
+.users img{
+  width: 55%;
+  border-radius: 100%;
+
+}
+
+.users_left_right{
+  display: inline-block;
+  width: 125px;
+  position: absolute;
+  margin: 50px 15px;
+}
+
+.users_left_right p{
+  margin-bottom: 3px;
+}
+
+.users a:hover{
+  text-decoration: none;
+}
+
+.main_post{
+  float:right;
+  width: 67%;
+  z-index: -1;
+  min-height: 160px;
+  margin-right: 3%;
+}
+
+.post_form{
+  width: 100%;
+}
+
+.post_form textarea{
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid #d2d3c9;
+  margin-right: 5px;
+  height: 60px;
+  font-size: 18px;
+  padding: 5px;
+}
+
+.post_form [type="submit"]{
+  position: absolute;
+  width: 7%;
+  height: 60px;
+  margin-left: 3px;
+}
+
+textarea:focus{
+  outline: 0;
+}
+
+a#titleLogo:hover{
+  text-decoration: none;
+  color:#f08a5d;
+}
+
+a#titleLogo{
+  color: #f6f5f5;
+  background-color: transparent;
+}
+
+nav{
+  float: right;
+  right: 1px;
+  position: absolute;
+  margin: 10px;
+}
+
+nav a{
+  position: relative;
+  color:#F6F5F5;
+  text-decoration: none;
+  font-size: 17px;
+  margin: auto 7px;
+}
+
+nav a:hover{
+  text-decoration: none;
+  color:#f08a5d;
+}
+
+.logo{
+  margin-left: 10px;
+  font-size: 125%;
+  position: relative;
+  top:9px;
+  text-shadow: #f08a5d 0.5px 0.5px 0.5px;
+}

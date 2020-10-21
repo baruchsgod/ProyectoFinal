@@ -1,0 +1,67 @@
+body{
+  background-image: url("../images/desktop.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form{
+  text-align: center;
+  margin: 15px auto 10px;
+}
+
+/* *******CLASSES ***********/
+
+.register_box{
+  margin: 0% auto 10%;
+  position: relative;
+  top: 8rem;
+  width: 35%;
+  background-color: #ffffff;
+  border: 1px solid #EDEDED;
+  border-radius: 10px;
+  padding: 10px;
+  opacity: 0.98;
+
+}
+
+.header_box{
+
+  text-align: center;
+  margin-bottom: 5px;
+  background-color: #ee6f57;
+  color:#fff;
+  padding: 1%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+.header_box h1{
+  margin: 0 auto 8px;
+  color:#dee4e6;
+  font-family: 'Pacifico', cursive;
+  text-shadow: #000 1px 1px 0.5px;
+}
+
+.imagen{
+  width: 30%;
+  display: block;
+  margin: 2px auto;
+
+}
+
+input[type="submit"]{
+  margin-top: 15px;
+}
+
+input[type="text"],[type="email"],[type="password"]{
+  width: 70%;
+  margin-top: 6px;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+input[type="text"]:hover,[type="email"]:hover,[type="password"]:hover{
+  border: 2px solid #1aa6b7;
+}
