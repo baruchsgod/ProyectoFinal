@@ -57,6 +57,13 @@ body{
 
 .users_left_right p{
   margin-bottom: 3px;
+
+}
+
+.secondary_posts{
+  float: left;
+  width: 25%;
+  margin-left: 3%;
 }
 
 .users a:hover{
@@ -73,6 +80,25 @@ body{
 
 .post_form{
   width: 100%;
+}
+
+.posts{
+  margin: 3px 0 3px;
+}
+
+.posts img{
+  border-radius: 10px;
+}
+
+.body_class{
+  margin-bottom: 6px;
+}
+
+.borders{
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-top: 2px solid #9ba4b4;
+
 }
 
 .post_form textarea{

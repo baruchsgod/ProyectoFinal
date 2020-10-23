@@ -19,6 +19,7 @@
     </a>
     <div class="users_left_right">
       <a href="<?php echo $userLoggedIn; ?>">
+
          <?php echo $userArray['first_name']." ".$userArray['last_name'];?>
 
       </a>
@@ -40,11 +41,13 @@
       <br>
     </form>
     <?php
-      $user_obj = new User($con, $userLoggedIn);
-      echo $user_obj->getFirstAndLastName();
+    $posts = new Post($con, $userLoggedIn);
+    $posts->getPostsFriends();
     ?>
   </div>
-
+  <div class="secondary_posts column">
+    Esto es una prueba
+  </div>
 
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

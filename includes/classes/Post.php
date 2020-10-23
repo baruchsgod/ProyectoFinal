@@ -52,11 +52,11 @@
         $date_added = $row['date_added'];
 
         if($user_to=="none"){
-          $user_to="";
+          $user_to_a="";
         }else{
           $user_to_obj = new User($this->con,$user_to);
           $user_to_name = $user_to_obj -> getFirstAndLastName();
-          $user_to_a = "<a href='".$user_to."'>".$user_to_name."</a>";
+          $user_to_a = "to <a href='".$user_to."'>".$user_to_name."</a>";
         }
 
         $userClosed = new User($this->con, $added_by);
@@ -66,9 +66,74 @@
 
         $userDetails_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE user_name = '$added_by'");
         $user_row = mysqli_fetch_array($userDetails_query);
+        $first_name = $user_row['first_name'];
+        $last_name = $user_row['last_name'];
+        $profile_pic = $user_row['profile_pic'];
 
+        //Date Diff
 
+        $date_time_now = date("Y-m-d H:i:s");
+        $date_start = new DateTime($date_added);
+        $date_end = new DateTime($date_time_now);
+        $interval = $date_start->diff($date_end);
+
+        if($interval->y >=1){
+          if($interval->y==1){
+            $time_message = $interval->y . " year ago";
+          }else{
+            $time_message = $interval->y . " years ago";
+          }
+        }else if($interval->m>=1){
+          if($interval->d ==0){
+            $days = " ago";
+          }else if($interval->d ==1){
+            $days = $interval->d . " day ago";
+          }else{
+            $days = $interval->d . " days ago";
+          }
+
+          if($interval->m ==1){
+            $time_message = $interval->m . " month ". $days;
+          }else{
+            $time_message = $interval->m." months ".$days;
+          }
+        }else if($interval->d>=1){
+          if($interval->d ==1){
+            $time_message = "Yesterday";
+          }else{
+            $time_message = $interval->d . " days ago";
+          }
+        }else if($interval->h >=1){
+          if($interval->h ==1){
+            $time_message = "An hour ago";
+          }else{
+            $time_message = $interval->h . " hours ago";
+          }
+        }else if($interval->i>=1){
+          if($interval->i ==1){
+            $time_message = " a minute ago";
+          }else{
+            $time_message = $interval->i . " minutes ago";
+          }
+        }else{
+          $time_message = "less than a minute ago";
+        }
+
+        $str.= "<div class='container-fluid borders'>
+                  <div class='posts'>
+                    <img src='$profile_pic' width='75'>
+                  </div>
+                  <div>
+                    <a href='$added_by'>$first_name $last_name</a> $user_to_a &nbsp;&nbsp; $time_message
+                  </div>
+                  <div class='body_class'>
+                    $body
+                    <br>
+                  </div>
+                </div>";
       }
+
+      echo $str;
     }
   }
 
