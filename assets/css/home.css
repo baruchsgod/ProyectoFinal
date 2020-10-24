@@ -62,8 +62,12 @@ body{
 
 .secondary_posts{
   float: left;
-  width: 25%;
+  width: 24.5%;
+  max-width: 24.5%;
   margin-left: 3%;
+  position: absolute;
+  margin-top: 16%;
+
 }
 
 .users a:hover{

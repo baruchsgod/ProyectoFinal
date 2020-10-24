@@ -6,9 +6,11 @@
   {
     private $user_obj;
     private $con;
+    private $userLoggedIn;
 
     public function __construct($con,$user)
     {
+      $this->userLoggedIn = $user;
       $this->con = $con;
       $this->user_obj = new User($con,$user);
     }
@@ -63,6 +65,10 @@
         if($userClosed->isClosed()){
           continue;
         }
+
+        $friend_obj = new User($this->con,$this->userLoggedIn);
+
+        if($friend_obj->isFriend($added_by)){
 
         $userDetails_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE user_name = '$added_by'");
         $user_row = mysqli_fetch_array($userDetails_query);
@@ -131,6 +137,7 @@
                     <br>
                   </div>
                 </div>";
+              }
       }
 
       echo $str;

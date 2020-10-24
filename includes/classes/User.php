@@ -9,6 +9,7 @@
 
     public function __construct($con,$user)
     {
+
       $this->con = $con;
       $user_details_query = mysqli_query($con,"SELECT * FROM users WHERE user_name='$user'");
       $this->user = mysqli_fetch_array($user_details_query);
@@ -42,6 +43,16 @@
       $close = mysqli_query($this->con, "SELECT user_closed FROM users WHERE user_name = '$username'");
       $row=mysqli_fetch_array($close);
       if($row['user_closed']=="yes"){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    public function isFriend($user_to_check)
+    {
+      $userComma = ",".$user_to_check.",";
+      if(strstr($this->user['friend_array'],$userComma)|| $user_to_check==$this->user['user_name']){
         return true;
       }else{
         return false;
