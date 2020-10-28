@@ -24,7 +24,7 @@
   <div class="top_bar">
     <div class="logo">
       <img class="imagenes" src="assets/images/logo_transparent.png" alt="">
-      <a id="titleLogo" href="/Proyecto2/home.php">The Facebook</a>
+      <a id="titleLogo" href="/final/ProyectoFinal/home.php">The Facebook</a>
     </div>
     <nav>
       <a href="<?php echo $userLoggedIn; ?>">
