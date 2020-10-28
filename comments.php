@@ -31,26 +31,27 @@
       }
     </script>
     <?php
-      if(isset($_GET['id_post'])){
-        $post = $_GET['id_post'];
-
-        $my_query = mysqli_quer($con,"SELECT added_by, user_to FROM posts WHERE id='$post'");
+      if(isset($_GET['post'])){
+        $post = $_GET['post'];
+        $my_query = mysqli_query($con,"SELECT added_by, user_to FROM posts WHERE id='$post'");
         $row = mysqli_fetch_array($my_query);
 
         $posted_to = $row['added_by'];
-
         if(isset($_POST['postComment'.$post])){
-          $post_body = $_POST[post_body];
+          $post_body = $_POST['post_body'];
           $post_body = mysqli_escape_string($con, $post_body);
           $date_now = date("Y-m-d H:i:s");
-          $insert_post = mysqli_query($con, "INSERT INTO post_comments VALUES ('','$post_body',$userLoggedIn,'$posted_to','$date_now','no','$post')");
+          $insert_post = mysqli_query($con, "INSERT INTO post_comments VALUES ('','$post_body','$userLoggedIn','$posted_to','$date_now','no','$post')");
+          echo "<p>
+          Comment Posted!
+          </p>";
           //Esto es una prueba
         }
 
       }
      ?>
 
-     <form id="comment_form" action="comments.php?id_post=<?php echo $post?>" name="postComment<?php echo $post?>" method="post">
+     <form id="comment_form" action="comments.php?post=<?php echo $post?>" name="postComment<?php echo $post?>" method="post">
        <textarea name="post_body"></textarea>
        <input type="submit" name="postComment<?php echo $post ?>" value="Post">
      </form>

@@ -76,6 +76,21 @@
         $last_name = $user_row['last_name'];
         $profile_pic = $user_row['profile_pic'];
 
+        ?>
+        <script>
+        function toggle<?php echo $id;?>(){
+          var post_id = document.getElementById("toggleComment<?php echo $id;?>");
+
+          if(post_id.style.display === "block"){
+            post_id.setAttribute("style","display:none");
+          }else{
+            post_id.setAttribute("style","display:block");
+          
+          }
+        }
+        </script>
+        <?php
+
         //Date Diff
 
         $date_time_now = date("Y-m-d H:i:s");
@@ -125,7 +140,7 @@
           $time_message = "less than a minute ago";
         }
 
-        $str.= "<div class='container-fluid borders'>
+        $str.= "<div class='container-fluid borders' onClick='javascript:toggle$id()'>
                   <div class='posts'>
                     <img src='$profile_pic' width='75'>
                   </div>
@@ -136,6 +151,9 @@
                     $body
                     <br>
                   </div>
+                </div>
+                <div class='comments' id='toggleComment$id' style='display:none;'>
+                  <iframe src='comments.php?post=$id' id='comment_iframe' frameborder='0'></iframe>
                 </div>";
               }
       }
