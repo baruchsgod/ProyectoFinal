@@ -57,7 +57,7 @@ require 'includes/handlers/register_handler.php';
         <br>
         <input type="submit" class="btn btn-lg btn-warning" name="register_button" value="Register">
         <?php
-        if(in_array("<span style='color:#14C800'>You are all set! Go ahead and login!</span>",$error_array)) echo "<br><span style='color:#14C800'><a href='/Proyecto2/index.php'>You are all set! Go ahead and login!</a></span>"
+        if(in_array("<span style='color:#14C800'>You are all set! Go ahead and login!</span>",$error_array)) echo "<br><span style='color:#14C800'><a href='/Final/ProyectoFinal/index.php'>You are all set! Go ahead and login!</a></span>"
         ?>
 
       </form>
