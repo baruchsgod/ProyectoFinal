@@ -24,6 +24,14 @@
       return $row['first_name']." ".$row['last_name'];
     }
 
+    public function getProfilePic()
+    {
+      $username = $this->user['user_name'];
+      $query = mysqli_query($this->con, "SELECT profile_pic FROM users WHERE user_name = '$username'");
+      $row = mysqli_fetch_array($query);
+      return $row['profile_pic'];
+    }
+
     public function getNumPosts()
     {
         $username = $this->user['user_name'];
