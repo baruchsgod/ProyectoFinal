@@ -44,6 +44,7 @@
           $post_body = mysqli_escape_string($con, $post_body);
           $date_now = date("Y-m-d H:i:s");
           $insert_post = mysqli_query($con, "INSERT INTO post_comments VALUES ('','$post_body',$userLoggedIn,'$posted_to','$date_now','no','$post')");
+          //Esto es una prueba
         }
 
       }
