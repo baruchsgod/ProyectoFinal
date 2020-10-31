@@ -1,24 +1,26 @@
 <!DOCTYPE html>
+<?php
+  require 'config/config.php';
+  include("includes/classes/User.php");
+  include("includes/classes/Post.php");
+
+  if(isset($_SESSION['username'])){
+    $userLoggedIn = $_SESSION['username'];
+    $userDetails = mysqli_query($con, "SELECT * FROM users WHERE user_name = '$userLoggedIn'");
+    $userArray = mysqli_fetch_array($userDetails);
+  }else{
+    header("location:index.php");
+  }
+?>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/comments.css">
   </head>
   <body>
-    <?php
-      require 'config/config.php';
-      include("includes/classes/User.php");
-      include("includes/classes/Post.php");
 
-      if(isset($_SESSION['username'])){
-        $userLoggedIn = $_SESSION['username'];
-        $userDetails = mysqli_query($con, "SELECT * FROM users WHERE user_name = '$userLoggedIn'");
-        $userArray = mysqli_fetch_array($userDetails);
-      }else{
-        header("location:index.php");
-      }
-    ?>
     <script>
       function toggle(){
         var post_id = document.getElementById("comments");
@@ -53,7 +55,8 @@
 
      <form id="comment_form" action="comments.php?post=<?php echo $post?>" name="postComment<?php echo $post?>" method="post">
        <textarea name="post_body"></textarea>
-       <input type="submit" name="postComment<?php echo $post ?>" value="Post">
+       <input class="btn btn-lg btn-info" type="submit" name="postComment<?php echo $post ?>" value="Post">
+
      </form>
 
      <?php
@@ -124,11 +127,18 @@
             <div class="comment_section">
               <a href="<?php echo $posted_by?>" target="_parent"><img src="<?php echo $user_obj -> getProfilePic()?>" height="30" /></a>
               <a href="<?php echo $posted_by?>" target="_parent"><?php echo $user_obj-> getFirstAndLastName()?></a>
-              <p><?php echo $comment_body?></p>
-              <p><?php echo $time_message?></p>
+
+              <p id="tiempo"><?php echo $time_message?></p>
+              <p class="comentario"><?php echo $comment_body?></p>
+
             </div>
             <?php
           }
+        }else{
+          echo "<center>
+          <br />
+          No comments to show
+          </center>";
         }
      ?>
 

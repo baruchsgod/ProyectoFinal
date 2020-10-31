@@ -1,7 +1,44 @@
+#tiempo{
+  display: inline-block;
+  margin-left: 4px;
+}
+
 .comment_section{
   border-top: 1px solid #bbbfca;
 }
 
 .comment_section img{
   border-radius: 100%;
+}
+
+.comment_section a:hover{
+  text-decoration: none;
+}
+
+iframe{
+  width: 100%;
+}
+
+#comment_form textarea{
+  width: 80%;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+#comment_form textarea:focus{
+  outline: 0;
+}
+
+#comment_form input{
+  height: 40px;
+  font-size:1rem;
+  position: relative;
+  bottom:17px;
+  margin-left: 8px;
+}
+
+.comentario{
+  margin-left: 35px;
 }

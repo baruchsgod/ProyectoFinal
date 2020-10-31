@@ -79,18 +79,26 @@
         ?>
         <script>
         function toggle<?php echo $id;?>(){
-          var post_id = document.getElementById("toggleComment<?php echo $id;?>");
 
-          if(post_id.style.display === "block"){
-            post_id.setAttribute("style","display:none");
-          }else{
-            post_id.setAttribute("style","display:block");
-          
+          var target = $(event.target);
+          var post_id = document.getElementById("toggleComment<?php echo $id;?>");
+          if(!target.is("a")){
+            if(post_id.style.display === "block"){
+              post_id.setAttribute("style","display:none");
+            }else{
+              post_id.setAttribute("style","display:block");
+
+            }
           }
+
+
+
         }
         </script>
         <?php
 
+        $posts_num = mysqli_query($this->con, "SELECT * FROM post_comments WHERE post_id = '$id'");
+        $num_post = mysqli_num_rows($posts_num);
         //Date Diff
 
         $date_time_now = date("Y-m-d H:i:s");
@@ -150,6 +158,10 @@
                   <div class='body_class'>
                     $body
                     <br>
+                  </div>
+                  <div class='numComment_likes'>
+                    Comments($num_post)
+                    <iframe src='likes.php?post=$id'></iframe>
                   </div>
                 </div>
                 <div class='comments' id='toggleComment$id' style='display:none;'>

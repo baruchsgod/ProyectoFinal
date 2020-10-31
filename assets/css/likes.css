@@ -1,0 +1,16 @@
+.like_value{
+  display: inline-block;
+  margin-left: 4px;
+}
+
+input[type="submit"]{
+  border: 0px;
+  background-color: #f7dad9;
+  font-family: sans-serif;
+  font-size: 18px;
+  color: #9ad3bc;
+}
+
+input[type="submit"]:hover{
+  color: #8db596;
+}
