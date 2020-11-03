@@ -62,14 +62,14 @@
 
     if($num_rows > 0){
       echo "<form action='likes.php?post=".$post . "' method='POST'>
-              <input type='submit' class='comment_like' name='Unlike' value='unlike' />
+              <input type='submit' class='comment_like' name='Unlike' value='Unlike' />
               <div class='like_value'>"
                 .$total_likes. " Likes
               </div>
             </form>";
     }else{
       echo "<form action='likes.php?post=".$post . "' method='POST'>
-              <input type='submit' class='comment_like' name='Like' value='like' />
+              <input type='submit' class='comment_like' name='Like' value='Like' />
               <div class='like_value'>"
                 .$total_likes. " Likes
               </div>

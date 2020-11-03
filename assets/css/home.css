@@ -188,3 +188,52 @@ nav a:hover{
   top:9px;
   text-shadow: #f08a5d 0.5px 0.5px 0.5px;
 }
+
+.profile_left{
+  top:-25px;
+  width: 20%;
+  max-width: 240px;
+  min-width: 130px;
+  height: 600px;
+  min-height: 600px;
+  float: left;
+  position: relative;
+  text-align: center;
+  background-color: #f7dad9;
+  border-right: 5px solid #f08a5d;
+  right: 14px;
+}
+
+.profile_left img{
+  border-radius: 100%;
+  width: 60%;
+  margin-top: 10px;
+  border: 5px solid #f08a5d;
+  
+}
+
+.profile_info{
+  text-align: left;
+  margin-top: 10px;
+  width: 100%;
+  background-color: #ffdd93;
+  padding: 15px 0 15px 15px;
+}
+
+.profile_main{
+  background-color: #f7dad9;
+  min-height: 200px;
+  margin-left: 1%;
+  width: 77%;
+  margin-right: 2.5%;
+  float: right;
+  background-color: #f7dad9;
+  padding: 10px;
+  border: 1px solid #fbf7f0;
+  box-shadow: 2px 2px 1px #968c83;
+  top:-25px;
+  position: relative;
+}
+
+
+

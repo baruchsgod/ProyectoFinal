@@ -33,7 +33,7 @@
 
         ?>
       </a>
-      <a href="#">
+      <a href="home.php">
         <i class="fa fa-home fa-2x"></i>
       </a>
       <a href="#">
