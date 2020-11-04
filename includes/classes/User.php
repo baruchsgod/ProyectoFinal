@@ -66,6 +66,45 @@
         return false;
       }
     }
+
+    public function didReceiveRequest($user_to)
+    {
+      $user_from = $this->user['user_name'];
+      $check_request_query = mysqli_query($this->con, "SELECT * FROM friend_requests WHERE user_to ='$user_to' AND user_from = '$user_from'");
+      if(mysqli_num_rows($check_request_query)>0){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    public function didSendRequest($user_from)
+    {
+      $user_to = $this->user['user_name'];
+      $check_request_query = mysqli_query($this->con, "SELECT * FROM friend_requests WHERE user_to ='$user_to' AND user_from = '$user_from'");
+      if(mysqli_num_rows($check_request_query)>0){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    public function removeFriend($user_to_remove)
+    {
+      $loggedIn_user = $this->user['user_name'];
+
+      $query = mysqli_query($this->con, "SELECT friend_array FROM users WHERE user_name='$user_to_remove'");
+      $row = mysqli_fetch_array($query);
+      $friend_list = $row['friend_array'];
+
+      $new_friend_list = str_replace($user_to_remove.",", "", $this->user['friend_array']);
+
+      $remove = mysqli_query($this->con, "UPDATE users SET friend_array = '$new_friend_list' WHERE user_name = '$loggedIn_user' ");
+
+      $new_users_friend_list = str_replace($loggedIn_user.",","",$friend_list);
+      $removeUser = mysqli_query($this->con, "UPDATE users SET friend_array = '$new_users_friend_list' WHERE user_name = '$user_to_remove' ");
+    }
+
   }
 
  ?>

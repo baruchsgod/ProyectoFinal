@@ -209,15 +209,17 @@ nav a:hover{
   width: 60%;
   margin-top: 10px;
   border: 5px solid #f08a5d;
-  
+
 }
 
 .profile_info{
   text-align: left;
   margin-top: 10px;
+  margin-bottom: 15px;
   width: 100%;
-  background-color: #ffdd93;
+  background-color: #f6f5f1;
   padding: 15px 0 15px 15px;
+
 }
 
 .profile_main{
@@ -234,6 +236,3 @@ nav a:hover{
   top:-25px;
   position: relative;
 }
-
-
-
