@@ -17,6 +17,7 @@
     <title>The Facebook</title>
     <link rel="shortcut icon" href="assets/images/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
     <link rel="stylesheet" href="assets/css/home.css">
     <script src="https://use.fontawesome.com/f58802a848.js"></script>
   </head>
@@ -24,7 +25,7 @@
   <div class="top_bar">
     <div class="logo">
       <img class="imagenes" src="assets/images/logo_transparent.png" alt="">
-      <a id="titleLogo" href="/final/ProyectoFinal/home.php">The Facebook</a>
+      <a id="titleLogo" href="/Proyecto1/home.php">The Facebook</a>
     </div>
     <nav>
       <a href="<?php echo $userLoggedIn; ?>">
@@ -42,7 +43,7 @@
       <a href="#">
         <i class="fa fa-bell-o fa-2x"></i>
       </a>
-      <a href="#">
+      <a href="requests.php">
         <i class="fa fa-users fa-2x"></i>
       </a>
       <a href="#">

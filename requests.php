@@ -1,6 +1,7 @@
 <?php
 include("includes/header.php");
-
+include("includes/classes/User.php");
+include("includes/classes/Post.php");
 
 
  ?>
@@ -16,18 +17,33 @@ include("includes/header.php");
           $user_from = $row['user_from'];
           $user_from_obj = new User($con, $user_from);
 
-          echo $user_from_obj->getFirstAndLastName(). "sent you a friend request!";
+          echo $user_from_obj->getFirstAndLastName(). " sent you a friend request!";
 
           $user_from_friend_array = $user_from_obj -> getFriendArray();
 
-          if(isset($_POST['accept_request'].$user_from)){
+          if(isset($_POST['accept_request'.$user_from])){
+            $add_friend_query = mysqli_query($con, "UPDATE users SET friend_array = CONCAT(friend_array,'$user_from') WHERE user_name = '$userLoggedIn'");
+            $add_friend_query = mysqli_query($con, "UPDATE users SET friend_array = CONCAT(friend_array,'$userLoggedIn') WHERE user_name = '$user_from'");
 
+            $delete_request = mysqli_query($con, "DELETE FROM friend_requests WHERE user_to = '$userLoggedIn' AND user_from='$user_from'");
+            echo "You are now friends";
+            header("Location:requests.php");
           }
 
-          if(isset($_POST['ignore_request'].$user_from)){
-
+          if(isset($_POST['ignore_request'.$user_from])){
+            $delete_request = mysqli_query($con, "DELETE FROM friend_requests WHERE user_to = '$userLoggedIn' AND user_from='$user_from'");
+            echo "Request ignored";
+            header("Location:requests.php");
           }
+          ?>
+          <form class="" action="requests.php" method="POST">
+            <input id="accept_button" class="btn btn-lg btn-success" type="submit" name="accept_request<?php echo $user_from;?>" value="Accept">
+            <input id="ignore_button" class="btn btn-lg btn-danger" type="submit" name="ignore_request<?php echo $user_from;?>" value="Ignore">
+          </form>
+          <?php
         }
       }
     ?>
+    
+
  </div>

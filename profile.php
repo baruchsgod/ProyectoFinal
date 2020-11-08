@@ -58,7 +58,39 @@
             }
           }
         ?>
+
       </form>
+      <input type="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" name="" value="Post Something">
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Post Something!</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+            </div>
+
+            <div class="modal-body">
+              <p>This will appear on the user's profile page and also their newsfeed for your friends to see!</p>
+
+              <form class="profile_post" action="index.html" method="POST">
+                <div class="form-group">
+                  <textarea class="form-control" name="post_body"></textarea>
+                  <input type="hidden" name="user_from" value="<?php echo $userLoggedIn;?>">
+                  <input type="hidden" name="user_to" value="<?php echo $username;?>">
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="profile_main">
           <?php echo $username?>
@@ -68,8 +100,15 @@
 
 
 
+
+
+
 </div>
 
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>
 </html>
