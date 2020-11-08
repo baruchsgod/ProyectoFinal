@@ -11,6 +11,22 @@
 
    $num_friends = (substr_count($user_array['friend_array'],",")-1);
  }
+
+ if(isset($_POST['remove_Friend'])){
+   $user = new User($con,$userLoggedIn);
+   $user -> removeFriend($username);
+ }
+
+ if(isset($_POST['add_friend'])){
+   $user = new User($con,$userLoggedIn);
+   $user -> sendRequest($username);
+ }
+
+ if(isset($_POST['respond_request'])){
+   header("Location:requests.php");
+ }
+
+
 ?>
 
     <div class="profile_left">
