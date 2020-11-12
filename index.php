@@ -1,4 +1,3 @@
-
 <!doctype html>
 <?php
   require 'includes/handlers/database.php';

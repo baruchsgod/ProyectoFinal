@@ -32,6 +32,7 @@ body{
   border-radius: 10px;
   box-shadow: 2px 2px 1px #968c83;
 
+
 }
 
 .users{
@@ -39,6 +40,7 @@ body{
   float: left;
   margin-bottom: 20px;
   margin-left: 3%;
+
 
 }
 
@@ -62,13 +64,28 @@ body{
 
 .secondary_posts{
   float: left;
-  width: 24.5%;
+  width: 34%;
   max-width: 24.5%;
   margin-left: 3%;
   position: absolute;
   margin-top: 16%;
 
 }
+  .carousel-item{
+    height: 20rem;
+    background: #777;
+    color: white;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+  }
+  .container{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom:50px;
+  }
 
 .users a:hover{
   text-decoration: none;
