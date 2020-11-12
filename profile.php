@@ -4,6 +4,7 @@
  include("includes/classes/User.php");
  include("includes/classes/Post.php");
 
+
  if(isset($_GET['profile_username'])){
    $username = $_GET['profile_username'];
    $user_details = mysqli_query($con, "SELECT * FROM users WHERE user_name = '$username'");
@@ -26,6 +27,12 @@
    header("Location:requests.php");
  }
 
+ if(isset($_POST['submit_post'])){
+   $post_class = new Post($con,$userLoggedIn);
+   $post_class -> submitPost($_POST['post_body'],$username);
+   header("Location:home.php");
+
+ }
 
 ?>
 
@@ -75,17 +82,18 @@
             <div class="modal-body">
               <p>This will appear on the user's profile page and also their newsfeed for your friends to see!</p>
 
-              <form class="profile_post" action="index.html" method="POST">
+              <form class="profile_post" action="" method="POST" onsubmit="return notEmpty()">
                 <div class="form-group">
-                  <textarea class="form-control" name="post_body"></textarea>
+                  <textarea id="post_body" class="form-control" name="post_body"></textarea>
                   <input type="hidden" name="user_from" value="<?php echo $userLoggedIn;?>">
                   <input type="hidden" name="user_to" value="<?php echo $username;?>">
                 </div>
-              </form>
+
             </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" name="submit_post" id="submit_post_button">Post</button>
+                <button type="submit" class="btn btn-primary" name="submit_post" id="submit_post_button">Post</button>
+                </form>
               </div>
 
 
@@ -97,7 +105,21 @@
           <?php echo $username?>
 
     </div>
+    <script>
+      function notEmpty(){
+        var body = document.getElementById('post_body').value;
+        var len = body.length;
 
+        if(len!=0){
+          return true;
+        }else{
+          return false;
+        }
+
+
+      }
+
+    </script>
 
 
 
@@ -106,18 +128,6 @@
 
 </div>
 
-<script>
-  function turnDown(){
-
-    var box= document.getElementById("myModal");
-
-
-      box.setAttribute("style","display:none");
-
-
-
-  }
-</script>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
