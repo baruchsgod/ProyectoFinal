@@ -1,13 +1,14 @@
 
 body{
-  background-color: #cdc9c3;
+  background-color: #1D273D;
+
 }
 .top_bar{
   width: 100%;
   min-width: 1050px;
   height: 55px;
-  background-color: #ee6f57;
-  border-bottom: 0.25em solid #f08a5d;
+  background-color: #414358;
+  border-bottom: 0.25em solid #414358;
   margin-bottom: 10px;
   display: inline-flex;
   z-index: 10;
@@ -26,22 +27,24 @@ body{
 }
 
 .column{
-  background-color: #f7dad9;
-  padding: 10px;
-  border: 1px solid #fbf7f0;
+  background-color: #6C6E87;
+  padding: 5px;
+  border: 0.5px solid #6C6E87;
   border-radius: 10px;
-  box-shadow: 2px 2px 1px #968c83;
-
-
+  box-shadow: 2px 2px 1px #6C6E87;
 }
 
 .users{
   width: 25%;
   float: left;
   margin-bottom: 20px;
-  margin-left: 3%;
+  margin-left: 0%;
+}
 
-
+.form input{
+  background: none;
+  width: 100%;
+  height: 100%;
 }
 
 .users img{
@@ -55,6 +58,7 @@ body{
   width: 125px;
   position: absolute;
   margin: 50px 15px;
+  color: white;
 }
 
 .users_left_right p{
@@ -65,10 +69,11 @@ body{
 .secondary_posts{
   float: left;
   width: 34%;
-  max-width: 24.5%;
-  margin-left: 3%;
+  max-width: 28%;
+  margin-left: 0%;
   position: absolute;
   margin-top: 16%;
+  margin-right: 200%;
 
 }
   .carousel-item{
@@ -76,15 +81,14 @@ body{
     background: #777;
     color: white;
     position: relative;
-    background-position: center;
-    background-size: cover;
+
   }
   .container{
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    padding-bottom:50px;
+
   }
 
 .users a:hover{
@@ -166,11 +170,12 @@ textarea:focus{
   border:0px;
   position: relative;
   top: 13px;
+
 }
 
 a#titleLogo:hover{
   text-decoration: none;
-  color:#f08a5d;
+  color:#F2F2F7;
 }
 
 a#titleLogo{
@@ -256,4 +261,16 @@ nav a:hover{
 
 .format{
   margin-top: 10px;
+}
+
+
+.overlay-image{
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+
 }

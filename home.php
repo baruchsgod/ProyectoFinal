@@ -4,13 +4,13 @@
  include("includes/header.php");
  include("includes/classes/User.php");
  include("includes/classes/Post.php");
+ include("js/noticias.php");
 
  if(isset($_POST['post_text'])){
    $post = new Post($con,$userLoggedIn);
    $post -> submitPost($_POST['post_text'],"none");
    header("Location:home.php");
  }
-
 ?>
 <html lang="en">
   <head>
@@ -21,6 +21,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+       <link rel="stylesheet" href="assets/css/home.css">
 
     <title>Welcome</title>
   </head>
@@ -59,49 +60,98 @@
           $posts->getPostsFriends();
           ?>
         </div>
-        <div class="secondary_posts">
-  <input type="submit" class="btn btn-block boton-ingresar" onclick="obtenerDatos(1);" value="INGRESAR">
-              <div id="myCarousel" class="carousel slide"
-              data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#myCarousel"
-                data-slide-to="0" class="active" onclick="obtenerDatos(1);"> </li>
-                <li data-target="#myCarousel"
-                data-slide-to="1" onclick="obtenerDatos(1);"></li>
-                <li data-target="#myCarousel"
-                data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                  <div class="carousel-item active">
-                  <div class="container" style="background-image:url();" id="noticia1">
-                    <input type="text" id="txttitle" class="form-control">
-                  </div>
-                  </div>
-                  <div class="carousel-item">
-                  <div class="container">
-                    <p>kjferjflejrfljrflkjrekjflkerjflkrje
-                    ejfklerjkflj
-                  felrjkfklerjflkjrelkfjlkr </p>
-                  <a href="#" class="btn btn-lg btn-primary">Slide</a>
-                  </div>
-                  </div>
-              </div>
+        <div class="secondary_posts column">
+          <div id="myCarousel" class="carousel slide"
+                data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel"
+                  data-slide-to="0" class="active" > </li>
+                  <li data-target="#myCarousel"
+                  data-slide-to="1"></li>
+                  <li data-target="#myCarousel"
+                  data-slide-to="2"></li>
+                </ol>
+                <div class="myCarousel carousel-inner">
+                    <div class="carousel-item active">
+                     <img src="<?php echo$datos->articles[0]->urlToImage ?>" class="overlay-image">
+                     <div class="container">
+                       <p class="font-weight-bold">TITLE: <?php echo $datos->articles[0]->title?></p>
+                       <p class="font-weight-bolder"><?php echo $datos->articles[0]->description ?></p>
+                         <a href="<?php echo $datos->articles[0]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                     </div>
+
+                    </div>
+                    <div class="carousel-item">
+                      <img src="<?php echo$datos->articles[1]->urlToImage ?>" class="overlay-image">
+                      <div class="container">
+                        <p class="font-weight-bold">TITLE: <?php echo $datos->articles[1]->title?></p>
+                        <p class="font-weight-bolder"><?php echo $datos->articles[1]->description ?></p>
+                          <a href="<?php echo $datos->articles[1]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="<?php echo$datos->articles[2]->urlToImage ?>" class="overlay-image">
+                      <div class="container">
+                        <p class="font-weight-bold">TITLE: <?php echo $datos->articles[2]->title?></p>
+                        <p class="font-weight-bolder"><?php echo $datos->articles[2]->description ?></p>
+                          <a href="<?php echo $datos->articles[2]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="<?php echo$datos->articles[3]->urlToImage ?>" class="overlay-image">
+                      <div class="container">
+                        <p class="font-weight-bold">TITLE: <?php echo $datos->articles[3]->title?></p>
+                        <p class="font-weight-bolder"><?php echo $datos->articles[3]->description ?></p>
+                          <a href="<?php echo $datos->articles[3]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="<?php echo$datos->articles[4]->urlToImage ?>" class="overlay-image">
+                      <div class="container">
+                        <p class="font-weight-bold">TITLE: <?php echo $datos->articles[4]->title?></p>
+                        <p class="font-weight-bolder"><?php echo $datos->articles[4]->description ?></p>
+                          <a href="<?php echo $datos->articles[4]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="<?php echo$datos->articles[5]->urlToImage ?>" class="overlay-image">
+                      <div class="container">
+                        <p class="font-weight-bold">TITLE: <?php echo $datos->articles[5]->title?></p>
+                        <p class="font-weight-bolder"><?php echo $datos->articles[5]->description ?></p>
+                          <a href="<?php echo $datos->articles[5]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="<?php echo$datos->articles[6]->urlToImage ?>" class="overlay-image">
+                      <div class="container">
+                        <p class="font-weight-bold">TITLE: <?php echo $datos->articles[6]->title?></p>
+                        <p class="font-weight-bolder"><?php echo $datos->articles[6]->description ?></p>
+                          <a href="<?php echo $datos->articles[6]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                      </div>
+                    </div>
+                </div>
+                <a href="#myCarousel"
+                class="carousel-control-prev" role="button"
+                data-slide="prev">
+                <span class="sr-only">Previous</span>
+                <span class="carousel-control-prev-icon"
+                aria-hidden="true"></span>
+              </a>
               <a href="#myCarousel"
-              class="carousel-control-prev" role="button"
-              data-slide="prev">
+              class="carousel-control-next" role="button"
+              data-slide="next">
               <span class="sr-only">Previous</span>
-              <span class="carousel-control-prev-icon"
+              <span class="carousel-control-next-icon"
               aria-hidden="true"></span>
-            </a>
-            <a href="#myCarousel"
-            class="carousel-control-next" role="button"
-            data-slide="next">
-            <span class="sr-only">Previous</span>
-            <span class="carousel-control-next-icon"
-            aria-hidden="true"></span>
-            </a>
-            </div>
-    </div>
+              </a>
+              </div>
+      </div>
+                      </div>
+
+
+
+
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -109,6 +159,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="js/noticias.js"></script>
+    <script type="text/javascript">
+      window.onload = obtenerNoticias();
+    </script>
     <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
