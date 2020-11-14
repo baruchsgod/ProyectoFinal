@@ -70,6 +70,11 @@
 
         if($friend_obj->isFriend($added_by)){
 
+          if($this->userLoggedIn== $added_by){
+            $delete_button = "<button class='btn btn-danger' id='post$id' type='submit' onClick='deletePost(this)' value='$id' >X</button>";
+          }else{
+            $delete_button = "";
+          }
         $userDetails_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE user_name = '$added_by'");
         $user_row = mysqli_fetch_array($userDetails_query);
         $first_name = $user_row['first_name'];
@@ -154,6 +159,9 @@
                   </div>
                   <div>
                     <a href='$added_by'>$first_name $last_name</a> $user_to_a &nbsp;&nbsp; $time_message
+
+                      $delete_button
+
                   </div>
                   <div class='body_class'>
                     $body
@@ -168,6 +176,39 @@
                   <iframe src='comments.php?post=$id' id='comment_iframe' frameborder='0'></iframe>
                 </div>";
               }
+              ?>
+              <script>
+
+                  function deletePost(post){
+                    var id = post.value;
+                    var url = "includes/handlers/delete_post.php?post_id="+id;
+                      bootbox.confirm("Are you sure you want to delete this post?",function(result){
+
+                        if(result){
+                          var form = $('<form></form>');
+
+                          form.attr("method", "post");
+                          form.attr("action", url);
+
+                          var field = $('<input />');
+
+                          field.attr("type","hidden");
+                          field.attr("name",result);
+                          field.attr("value", result);
+
+                          $(document.body).append(form);
+
+                          form.submit();
+
+                          
+                          }else{
+
+                        }
+                      })
+                  }
+              </script>
+
+              <?php
       }
 
       echo $str;
