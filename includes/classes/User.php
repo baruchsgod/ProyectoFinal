@@ -118,6 +118,40 @@
       $user_from = $this->user['user_name'];
       $query = mysqli_query($this->con, "INSERT INTO friend_requests VALUES ('','$user_to','$user_from')");
     }
+
+    public function getMutualFriends($user_to_check)
+    {
+      $mutual_friends = 0;
+      $user_array = $this->user['friend_array'];
+      $user_array_explode = explode(',', $user_array);
+
+      $query = mysqli_query($this->con, "SELECT friend_array FROM users WHERE user_name = '$user_to_check'");
+
+      $row = mysqli_fetch_array($query);
+
+      $user_to_check_array = $row['friend_array'];
+      $user_to_check_array_explode = explode(',', $user_to_check_array);
+
+      foreach($user_array_explode as $i)
+      {
+        if(empty($i) || $i == NULL || $i == FALSE){
+
+        }else{
+          foreach($user_to_check_array_explode as $j){
+            if(empty($j) || $j == NULL || $j == FALSE){
+
+            }else{
+              if(trim($i) == trim($j) ){
+                $mutual_friends++;
+              }
+            }
+
+          }
+
+        }
+      };
+      return $mutual_friends;
+    }
   }
 
  ?>

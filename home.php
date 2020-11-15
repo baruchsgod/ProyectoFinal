@@ -12,7 +12,7 @@
    header("Location:home.php");
  }
 
- 
+
 ?>
 <html lang="en">
   <head>
@@ -30,8 +30,8 @@
   <body>
     <div class="users column">
       <a href="<?php echo $userLoggedIn; ?>">
-        <img src="assets/images/profile_pics/defaults/profile_2.jpg" alt="">
-        <!-- <img src="<?php echo user['profile_pic']?>" alt=""> -->
+        
+        <img src="<?php echo $userArray['profile_pic']?>" alt="">
       </a>
       <div class="users_left_right">
         <a href="<?php echo $userLoggedIn; ?>">

@@ -42,6 +42,13 @@
             <p><?php echo "Posts: ".$user_array['num_posts']?></p>
             <p><?php echo "Likes: ".$user_array['num_likes']?></p>
             <p><?php echo "Friends: ".$num_friends?></p>
+            <p><?php
+              if($userLoggedIn != $username){
+                $userFriends = new User($con, $userLoggedIn);
+                $total = $userFriends -> getMutualFriends($username);
+                echo "Mutual Friends: ".$total;
+              }
+            ?></p>
       </div>
 
       <form class="" action="<?php echo $username;?>" method="post">
@@ -102,7 +109,15 @@
       </div>
     </div>
     <div class="profile_main">
-          <?php echo $username?>
+          <?php
+            if(isset($_GET['profile_username'])){
+              $username1 = $_GET['profile_username'];
+              $my_posts = new Post($con,$userLoggedIn);
+              $my_posts -> getMyPosts($username1);
+            }
+
+
+          ?>
 
     </div>
     <script>
@@ -121,19 +136,17 @@
 
     </script>
 
-
-
-
-
-
 </div>
 
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
   <script src="assets/js/app.js" charset="utf-8"></script>
+
+
   </body>
 </html>

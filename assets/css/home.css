@@ -221,8 +221,8 @@ nav a:hover{
   float: left;
   position: relative;
   text-align: center;
-  background-color: #f7dad9;
-  border-right: 5px solid #f08a5d;
+  background-color: #6C6E87;
+  border-right: 5px solid #414358;
   right: 14px;
 }
 
@@ -230,7 +230,7 @@ nav a:hover{
   border-radius: 100%;
   width: 60%;
   margin-top: 10px;
-  border: 5px solid #f08a5d;
+  border: 5px solid #414358;
 
 }
 
@@ -251,7 +251,7 @@ nav a:hover{
   width: 77%;
   margin-right: 2.5%;
   float: right;
-  background-color: #f7dad9;
+  background-color: #6C6E87;
   padding: 10px;
   border: 1px solid #fbf7f0;
   box-shadow: 2px 2px 1px #968c83;
@@ -273,4 +273,10 @@ nav a:hover{
   width: calc(100% - 1px);
   height: calc(100% - 1px);
 
+}
+
+.boton{
+  float:right;
+  position:relative;
+  border-radius: 5px;
 }
