@@ -30,7 +30,7 @@
   <body>
     <div class="users column">
       <a href="<?php echo $userLoggedIn; ?>">
-        
+
         <img src="<?php echo $userArray['profile_pic']?>" alt="">
       </a>
       <div class="users_left_right">
@@ -54,7 +54,7 @@
         <div class="main_post column">
           <form class="post_form" action="home.php" method="post">
             <textarea class="" name="post_text" id="post_text" placeholder="Got something to say?"></textarea>
-            <input class="btn btn-warning btn-lg" type="submit" name="post" id="post_button" value="Post">
+            <input class="btn btn-info btn-lg" type="submit" name="post" id="post_button" value="Post">
             <br>
           </form>
           <?php

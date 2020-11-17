@@ -2,6 +2,7 @@
   /**
    *
    */
+   // Esta es la clase para todo lo relativo a los posts que se realizan, incluidos sus comentarios
   class Post
   {
     private $user_obj;
@@ -233,7 +234,7 @@
           continue;
         }
 
-          if($userPosts == $added_by){
+          if($this->userLoggedIn == $added_by){
             $delete_button = "<button class='btn btn-danger boton' id='post$id' type='submit' onClick='deletePost(this)' value='$id' >X</button>";
           }else{
             $delete_button = "";
