@@ -79,4 +79,15 @@
          ?>
       </form>
     </div>
+
+
+ </div>
+
+ <div class="secondary_posts column">
+   <h4>Conversations</h4>
+   <div class="loaded_conversations">
+     <?php echo $message_obj -> getConvos(); ?>
+   </div>
+   <br>
+   <a href="messages.php?u=new">New Message</a>
  </div>
