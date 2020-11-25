@@ -29,7 +29,7 @@
   }
 
   if(isset($_POST['btnFind'])){
-    $user_find = $_POST['btnFind'];
+    $user_find = $_POST['found_user'];
 
     $found = $message_obj -> getUserIfExists($user_find);
   }

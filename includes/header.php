@@ -41,7 +41,7 @@
       <a href="messages.php">
         <i class="fa fa-comment fa-2x"></i>
       </a>
-      <a href="#">
+      <a href="notifications.php">
         <i class="fa fa-bell-o fa-2x"></i>
       </a>
       <a href="requests.php">
