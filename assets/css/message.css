@@ -1,3 +1,4 @@
+
 #message_textarea{
   width: 80%;
   margin-right: 8px;
@@ -43,4 +44,55 @@
   max-height: 400px;
   overflow: auto;
   margin-bottom: 10px;
+}
+
+.loaded_conversations{
+  max-height: 216px;
+  overflow: auto;
+
+}
+
+.user_found_messages{
+  border-bottom: 1px solid #3D3D3D;
+  padding: 8px 8px 10px 8px;
+}
+
+.find_user{
+  margin-left: 2%;
+  margin-bottom: 6px;
+  
+
+}
+
+.found_user{
+  font-size: 15px;
+  display: inline-block;
+  width: 35%;
+  border-radius: 5px;
+}
+
+
+/*** SPECIAL SELECTORS ***/
+
+.user_found_messages img{
+  height: 35px;
+  float: left;
+  margin-top: 5px;
+}
+
+.user_found_messages:hover{
+  background-color: #bbbbbb;
+
+}
+
+.loaded_conversations a:hover{
+  text-decoration: none;
+}
+
+.user_found_messages span{
+  color:#000000;
+}
+
+.user_found_messages p{
+  color: #000000;
 }

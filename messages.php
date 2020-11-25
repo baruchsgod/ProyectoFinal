@@ -28,6 +28,12 @@
     }
   }
 
+  if(isset($_POST['btnFind'])){
+    $user_find = $_POST['btnFind'];
+
+    $found = $message_obj -> getUserIfExists($user_find);
+  }
+
  ?>
 
  <div class="users column">
@@ -70,8 +76,18 @@
         <?php
           if($user_to == 'New'){
             echo "Select the friend you would like to message <br><br>";
-            echo "To: <input type='Text'>";
+            echo "<form action='' method='POST'>";
+
+            echo "To: <input class='form-control found_user' type='Text' name='found_user' placeholder='Use Name or Username' autocomplete='off'>";
+            echo "<button class='btn btn-info find_user' name='btnFind'>Find</button>";
+            echo "</form>";
             echo "<div class='results'></div>";
+
+              if(isset($found)){
+                echo $found;
+              }
+
+
           }else{
             echo "<textarea name='message_body' id='message_textarea' placeholder='Write your message ...'></textarea>";
             echo "<input type='submit' name='post_message' class='btn btn-lg btn-info' id='message_submit' value='Send' />";
@@ -86,8 +102,8 @@
  <div class="secondary_posts column">
    <h4>Conversations</h4>
    <div class="loaded_conversations">
-     <?php echo $message_obj -> getConvos(); ?>
+     <?php echo $message_obj->getConvos(); ?>
    </div>
    <br>
-   <a href="messages.php?u=new">New Message</a>
+   <a href="messages.php?u=New">New Message</a>
  </div>

@@ -16,6 +16,19 @@
       $this->user_obj = new User($con,$user);
     }
 
+    public function getUserIfExists($user_to_find)
+    {
+      $query = mysqli_query($this->con, "SELECT * FROM users WHERE user_name = '$user_to_find' OR first_name = '$user_to_find'");
+
+      $num = mysqli_num_rows($query);
+
+      if($row = mysqli_fetch_array($query)){
+        return $row['user_name'];
+      }else{
+        return "nothing";
+      }
+    }
+
     public function getMostRecentUser()
     {
       $userLoggedIn = $this -> user_obj -> getUsername();
@@ -66,14 +79,14 @@
       return $data;
     }
 
-    public function getLatestMessage($userLoggedIn, $user_to)
+    public function getLatestMessage($userLogged, $user_to)
     {
-      $details_array = array();
+      $details_array = [];
 
-      $query = mysqli_query($this->con, "SELECT body, user_to, date FROM messages WHERE (user_to = '$userLoggedIn' AND user_from = '$user_to') OR (user_to = '$user_to' AND user_from = '$userLoggedIn') ORDER BY id DESC LIMIT 1");
+      $query = mysqli_query($this->con, "SELECT body, user_to, date FROM messages WHERE (user_to = '$userLogged' AND user_from = '$user_to') OR (user_to = '$user_to' AND user_from = '$userLogged') ORDER BY id DESC LIMIT 1");
 
       $row = mysqli_fetch_array($query);
-      $sent_by = ($row['user_to'] == $userLoggedIn) ? "They said: " : "You said: ";
+      $sent_by = ($row['user_to'] == $userLogged) ? "They said: " : "You said: ";
 
       //Date Diff
 
@@ -158,13 +171,15 @@
         $split = $split[0] . $dots;
 
         $return_string .= "<a href='messages.php?u=$username'><div class='user_found_messages'>
-        <img src='".$user_found_obj->getProfilePic()."' style='border-radius:5px; margin-righ: 5px;'/>".
+        <img src='".$user_found_obj->getProfilePic()."' style='border-radius:5px; margin-right: 10px;'/>".
         $user_found_obj->getFirstAndLastName()."
         <span class='timestamp_smaller' id='grey'>".$latest_message_details[2]."</span>
         <p id='grey' style='margin:0;'>".$latest_message_details[0]. $split ."</p>
         </div></a>";
 
       }
+
+      return $return_string;
     }
   }
 
