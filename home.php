@@ -79,7 +79,7 @@
                      <div class="container">
                        <p class="font-weight-bold">TITLE: <?php echo $datos->articles[0]->title?></p>
                        <p class="font-weight-bolder"><?php echo $datos->articles[0]->description ?></p>
-                         <a href="<?php echo $datos->articles[0]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                         <a href="<?php echo $datos->articles[0]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">See News</a>
                      </div>
 
                     </div>
@@ -88,7 +88,7 @@
                       <div class="container">
                         <p class="font-weight-bold">TITLE: <?php echo $datos->articles[1]->title?></p>
                         <p class="font-weight-bolder"><?php echo $datos->articles[1]->description ?></p>
-                          <a href="<?php echo $datos->articles[1]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                          <a href="<?php echo $datos->articles[1]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">See News</a>
                       </div>
                     </div>
                     <div class="carousel-item">
@@ -96,7 +96,7 @@
                       <div class="container">
                         <p class="font-weight-bold">TITLE: <?php echo $datos->articles[2]->title?></p>
                         <p class="font-weight-bolder"><?php echo $datos->articles[2]->description ?></p>
-                          <a href="<?php echo $datos->articles[2]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                          <a href="<?php echo $datos->articles[2]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">See News</a>
                       </div>
                     </div>
                     <div class="carousel-item">
@@ -104,7 +104,7 @@
                       <div class="container">
                         <p class="font-weight-bold">TITLE: <?php echo $datos->articles[3]->title?></p>
                         <p class="font-weight-bolder"><?php echo $datos->articles[3]->description ?></p>
-                          <a href="<?php echo $datos->articles[3]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                          <a href="<?php echo $datos->articles[3]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">See News</a>
                       </div>
                     </div>
                     <div class="carousel-item">
@@ -112,7 +112,7 @@
                       <div class="container">
                         <p class="font-weight-bold">TITLE: <?php echo $datos->articles[4]->title?></p>
                         <p class="font-weight-bolder"><?php echo $datos->articles[4]->description ?></p>
-                          <a href="<?php echo $datos->articles[4]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                          <a href="<?php echo $datos->articles[4]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">See News</a>
                       </div>
                     </div>
                     <div class="carousel-item">
@@ -120,7 +120,7 @@
                       <div class="container">
                         <p class="font-weight-bold">TITLE: <?php echo $datos->articles[5]->title?></p>
                         <p class="font-weight-bolder"><?php echo $datos->articles[5]->description ?></p>
-                          <a href="<?php echo $datos->articles[5]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                          <a href="<?php echo $datos->articles[5]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">See News</a>
                       </div>
                     </div>
                     <div class="carousel-item">
@@ -128,7 +128,7 @@
                       <div class="container">
                         <p class="font-weight-bold">TITLE: <?php echo $datos->articles[6]->title?></p>
                         <p class="font-weight-bolder"><?php echo $datos->articles[6]->description ?></p>
-                          <a href="<?php echo $datos->articles[6]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">Ver Noticia</a>
+                          <a href="<?php echo $datos->articles[6]->url ?>" rel="nooper noreferrer" class="btn btn-primary btn-sm">See News</a>
                       </div>
                     </div>
                 </div>
