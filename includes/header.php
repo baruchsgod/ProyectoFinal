@@ -23,7 +23,7 @@
     <script src="https://use.fontawesome.com/f58802a848.js"></script>
   </head>
   <body>
-  <div class="top_bar">
+  <div class="top_bar dropdown">
     <div class="logo">
       <img class="imagenes" src="assets/images/logo_transparent.png" alt="">
       <a id="titleLogo" href="/Proyecto1/home.php">The Facebook</a>

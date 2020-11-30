@@ -1,5 +1,5 @@
 body{
-  background-image: url("../images/desktop.jpg");
+  background-color: #191F41;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -16,8 +16,9 @@ form{
   position: relative;
   top: 8rem;
   width: 35%;
-  background-color: #ffffff;
-  border: 1px solid #EDEDED;
+    background: rgba(1, 1, 1,.4);
+    box-shadow: 0 0 30px rgba(0,.0,.0,.568);
+  border: 1px solid #6C6E87;
   border-radius: 10px;
   padding: 10px;
   opacity: 0.98;
@@ -28,7 +29,7 @@ form{
 
   text-align: center;
   margin-bottom: 5px;
-  background-color: #ee6f57;
+  background-color: #3B7196;
   color:#fff;
   padding: 1%;
   border-top-left-radius: 10px;
