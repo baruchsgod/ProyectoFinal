@@ -19,7 +19,7 @@ require 'includes/handlers/register_handler.php';
         Register your information
       </div>
       <form class="" action="register.php" method="post">
-        <input class="form-control" type="text" name="reg_fname" placeholder="First Name" value="<?php
+        <input class="" type="text" name="reg_fname" placeholder="First Name" value="<?php
           if(isset($_SESSION['reg_fname'])){
             echo $_SESSION['reg_fname'];
           };
@@ -59,7 +59,7 @@ require 'includes/handlers/register_handler.php';
       <div class="text-center">
         <a href="index.php" class="btn  btn-info">Back</a>
         <button type="submit" name="register_button" value="Register"class="btn btn-info">Register</button>
-      
+
       </div>
 
         <?php
