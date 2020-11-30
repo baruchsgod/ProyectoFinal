@@ -55,7 +55,13 @@ require 'includes/handlers/register_handler.php';
         elseif(in_array("Your password only takes letter or numbers<br>",$error_array)) echo "<br>Your password only takes letter or numbers<br>";
         elseif(in_array("Your password must be between 5 and 30 characters<br>",$error_array)) echo "<br>Your password must be between 5 and 30 characters<br>";?>
         <br>
-        <input type="submit" class="btn btn-lg btn-warning" name="register_button" value="Register">
+      </br>
+      <div class="text-center">
+        <a href="index.php" class="btn  btn-info">Back</a>
+        <button type="submit" name="register_button" value="Register"class="btn btn-info">Register</button>
+      
+      </div>
+
         <?php
         if(in_array("<span style='color:#14C800'>You are all set! Go ahead and login!</span>",$error_array)) echo "<br><span style='color:#14C800'><a href='/Proyecto1/index.php'>You are all set! Go ahead and login!</a></span>"
         ?>

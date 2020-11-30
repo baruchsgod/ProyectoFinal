@@ -36,8 +36,8 @@
             <input type="password" class="form-control" name="userpassword" placeholder="Enter your password" autocomplete="off" required>
           </div>
           <!--la clase padre del boton lleva "mx-sm-5" da tamano de la caja-->
-          <div class="form-group mx-sm-5 pb-3">
-            <input type="submit" class="btn btn-block boton-ingresar" name="userButton" value="INGRESAR">
+          <div class="form-group mx-sm-5 pb-3 text-center">
+            <input type="submit" class="btn btn-info center" name="userButton" value="INGRESAR">
 
           </div>
           <div class="form-group text-center">
