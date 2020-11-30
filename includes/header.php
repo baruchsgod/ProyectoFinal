@@ -47,7 +47,7 @@
       <a href="requests.php">
         <i class="fa fa-users fa-2x"></i>
       </a>
-      <a href="#">
+      <a href="change_photo.php">
         <i class="fa fa-wrench fa-2x"></i>
       </a>
       <a href="includes/handlers/logout.php">

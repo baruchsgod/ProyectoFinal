@@ -64,7 +64,7 @@
             if($user_logged->isFriend($username)){
               echo "<input type='submit' name='remove_Friend' class='btn btn-lg btn-danger' value='Remove Friend'/>";
             }else if($user_logged->didReceiveRequest($username)){
-              echo "<input type='submit' name='respond_request' class='btn btn-lg btn-primary' value='Respond to Request'/>";
+              echo "<input type='submit' name='respond_request' class='btn btn-lg btn-info' value='Respond to Request'/>";
             }else if($user_logged->didSendRequest($username)){
               echo "<input type='submit' name='sent_request' class='btn btn-lg btn-info' value='Request Sent'/>";
             }else{
