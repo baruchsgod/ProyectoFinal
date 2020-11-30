@@ -19,7 +19,11 @@ require 'includes/handlers/register_handler.php';
         Register your information
       </div>
       <form class="" action="register.php" method="post">
+<<<<<<< HEAD
         <input type="text" class="" name="reg_fname" placeholder="First Name" value="<?php
+=======
+        <input class="" type="text" name="reg_fname" placeholder="First Name" value="<?php
+>>>>>>> 97a66c71e29d64490cf175a215c0d9be1b052ce8
           if(isset($_SESSION['reg_fname'])){
             echo $_SESSION['reg_fname'];
           };
