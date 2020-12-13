@@ -104,7 +104,7 @@ if(isset($_POST['register_button'])){
       $profile_pic = "assets/images/profile_pics/defaults/profile_2.jpg";
     }
 
-    $query = mysqli_query($con,"call insertar_usuario('','$fname','$lname','$username','$em','$password','$date','$profile_pic','0','0','no','')");
+    $query = mysqli_query($con,"call insert_User('','$fname','$lname','$username','$em','$password','$date','$profile_pic','0','0','no','')");
 
     array_push($error_array,"<span style='color:#14C800'>You are all set! Go ahead and login!</span>");
 
