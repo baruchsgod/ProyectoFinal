@@ -9,11 +9,11 @@ if(isset($_POST['userButton'])){
   $_SESSION['userEmail'] = $email;
   $pass = md5($_POST["userpassword"]);
 
-  $query = mysqli_query($con,"SELECT * FROM users where email = '$email' and password = '$pass'");
+  $query = mysqli_query($con,"call select_login('$email','$pass')");  // Procedimiento almacenado 
   $nr = mysqli_num_rows($query);
 
   if($nr == 1){
-   // echo "Bienvenido" .$nombre;
+    echo "Bienvenido" .$nombre;
 
    $row = mysqli_fetch_array($query);
 
