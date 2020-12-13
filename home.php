@@ -2,8 +2,10 @@
 <?php
 
  include("includes/header.php");
+ include("includes/classes/Notification.php");
  include("includes/classes/User.php");
  include("includes/classes/Post.php");
+
  include("js/noticias.php");
 
  if(isset($_POST['post_text'])){
@@ -28,6 +30,13 @@
     <title>Welcome</title>
   </head>
   <body>
+    <?php
+
+      //Unread notifications
+      $notifications = new Notification($con, $userLoggedIn);
+      $num_notifications = $notifications->getUnreadNumber();
+
+    ?>
     <div class="users column">
       <a href="<?php echo $userLoggedIn; ?>">
 

@@ -10,6 +10,7 @@
     require 'config/config.php';
     include("includes/classes/User.php");
     include("includes/classes/Post.php");
+    include("includes/classes/Notification.php");
 
     if(isset($_SESSION['username'])){
       $userLoggedIn = $_SESSION['username'];
@@ -44,6 +45,13 @@
       $update_users = mysqli_query($con,"UPDATE users SET num_likes='$total_user_likes' WHERE user_name='$user_liked'");
       $insert_user_like = mysqli_query($con, "INSERT INTO likes VALUES('','$userLoggedIn','$post')");
 
+
+      //Insert Notification
+
+      if($user_liked != $userLoggedIn){
+        $notification = new Notification($con, $userLoggedIn);
+        $notification-> insertNotification($post, $user_liked, "Like");
+      }
     }
     //Boton para dar unlike
 

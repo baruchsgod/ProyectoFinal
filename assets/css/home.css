@@ -288,3 +288,7 @@ nav a:hover{
   position:relative;
   border-radius: 5px;
 }
+
+.center{
+  text-align: center;
+}

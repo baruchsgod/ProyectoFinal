@@ -1,6 +1,7 @@
 <?php
 
 require 'config/config.php';
+
 $error_array = array();
 
 if(isset($_POST['userButton'])){
@@ -10,6 +11,7 @@ if(isset($_POST['userButton'])){
   $pass = md5($_POST["userpassword"]);
 
   $query = mysqli_query($con,"SELECT * FROM users where email = '$email' and password = '$pass'");
+
   $nr = mysqli_num_rows($query);
 
   if($nr == 1){
