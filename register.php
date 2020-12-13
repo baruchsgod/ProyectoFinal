@@ -19,18 +19,15 @@ require 'includes/handlers/register_handler.php';
         Register your information
       </div>
       <form class="" action="register.php" method="post">
-<<<<<<< HEAD
-        <input type="text" class="" name="reg_fname" placeholder="First Name" value="<?php
-=======
+
         <input class="" type="text" name="reg_fname" placeholder="First Name" value="<?php
->>>>>>> 97a66c71e29d64490cf175a215c0d9be1b052ce8
           if(isset($_SESSION['reg_fname'])){
             echo $_SESSION['reg_fname'];
           };
         ?>" required>
         <?php if(in_array("Your first name must be between 2 and 35 characters<br>",$error_array)) echo "<br>Your first name must be between 2 and 35 characters<br>"?>
         <br>
-        <input type="text" name="reg_lname" placeholder="Last Name" value="<?php
+        <input class="" type="text" name="reg_lname" placeholder="Last Name" value="<?php
           if(isset($_SESSION['reg_lname'])){
             echo $_SESSION['reg_lname'];
           }
