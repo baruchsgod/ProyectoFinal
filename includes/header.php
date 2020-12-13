@@ -29,11 +29,17 @@
       <a id="titleLogo" href="/Proyecto1/home.php">The Facebook</a>
     </div>
     <nav>
+
+
+
       <a href="<?php echo $userLoggedIn; ?>">
         <?php
            echo $userArray['first_name'];
 
         ?>
+      </a>
+      <a href="find.php">
+        <i class="fa fa-search fa-2x"></i>
       </a>
       <a href="home.php">
         <i class="fa fa-home fa-2x"></i>
@@ -41,8 +47,15 @@
       <a href="messages.php">
         <i class="fa fa-comment fa-2x"></i>
       </a>
-      <a href="notifications.php">
+      <a href="notifications.php?user=<?php echo $userLoggedIn?>">
         <i class="fa fa-bell-o fa-2x"></i>
+        <?php
+          if(isset($num_notifications)){
+            if($num_notifications>0){
+              echo "<span class='notification_badge' id='unread_notification'>".$num_notifications."</span>";
+            }
+          }
+        ?>
       </a>
       <a href="requests.php">
         <i class="fa fa-users fa-2x"></i>

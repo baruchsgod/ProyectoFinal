@@ -1,4 +1,7 @@
 <?php
+
+//this is the connection to the database
+
 ob_start();
 session_start();
 $timeZone = date_default_timezone_set('America/Costa_Rica');

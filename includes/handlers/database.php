@@ -1,6 +1,7 @@
 <?php
 
 require 'config/config.php';
+
 $error_array = array();
 
 if(isset($_POST['userButton'])){
@@ -9,7 +10,7 @@ if(isset($_POST['userButton'])){
   $_SESSION['userEmail'] = $email;
   $pass = md5($_POST["userpassword"]);
 
-  $query = mysqli_query($con,"call select_login('$email','$pass')");  // Procedimiento almacenado 
+  $query = mysqli_query($con,"call select_login('$email','$pass')");  // Procedimiento almacenado
   $nr = mysqli_num_rows($query);
 
   if($nr == 1){

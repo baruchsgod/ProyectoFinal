@@ -8,12 +8,14 @@
     private $user_obj;
     private $con;
     private $userLoggedIn;
+    private $notifications;
 
     public function __construct($con,$user)
     {
       $this->userLoggedIn = $user;
       $this->con = $con;
       $this->user_obj = new User($con,$user);
+
     }
 
     public function submitPost($body, $user_to)
@@ -32,8 +34,29 @@
           $user_to = "none";
         }
 
+
+
+        /* Insert post into database */
+
         $query = mysqli_query($this->con, "INSERT INTO POSTS VALUES ('','$body','$added_by','$user_to','$date_added','No','No','0')");
         $return_id = mysqli_insert_id($this->con);
+
+        //Insert notifications
+
+        if($user_to != 'none'){
+
+
+          $userName = $this->user_obj->getUsername();
+          $userLoggedInName = $this->user_obj->getFirstAndLastName();
+
+          $date_time = date("Y-m-d H:i:s");
+
+          $message = $userLoggedInName . " posted on your profile";
+
+          $link = "post.php?id=" . $return_id;
+
+          $insert_query = mysqli_query($this->con, "INSERT INTO notifications VALUES ('', '$user_to', '$userName', '$message', '$link', '$date_time', 'no', 'no')");
+        }
 
         $num_posts = $this->user_obj->getNumPosts();
         $num_posts++;

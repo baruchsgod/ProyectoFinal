@@ -288,3 +288,20 @@ nav a:hover{
   position:relative;
   border-radius: 5px;
 }
+
+.center{
+  text-align: center;
+}
+
+#main_column{
+  color: #fff;
+}
+
+.adjust_input{
+  width: 60%;
+  display: inline-block;
+}
+
+.adjust_button{
+  margin-left: 10px;
+}
