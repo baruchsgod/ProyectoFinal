@@ -38,6 +38,9 @@
 
         ?>
       </a>
+      <a href="find.php">
+        <i class="fa fa-search fa-2x"></i>
+      </a>
       <a href="home.php">
         <i class="fa fa-home fa-2x"></i>
       </a>

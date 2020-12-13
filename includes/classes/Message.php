@@ -29,6 +29,20 @@
       }
     }
 
+    public function getUserIfExistsProfile($user_to_find)
+    {
+      $query = mysqli_query($this->con, "SELECT * FROM users WHERE user_name = '$user_to_find' OR first_name = '$user_to_find'");
+
+
+      if($row = mysqli_fetch_array($query)){
+        return "<div class='found'><img src='".$row['profile_pic']."' style='border-radius:5px; margin-left: 25px; margin-top:5px ;height: 40px;'/>
+                <a href='".$row['user_name']."'>".$row['first_name']." ".$row['last_name']."</a></div>";
+      }else{
+        return "nothing";
+      }
+    }
+
+
     public function getMostRecentUser()
     {
       $userLoggedIn = $this -> user_obj -> getUsername();
