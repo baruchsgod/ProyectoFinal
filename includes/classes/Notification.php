@@ -7,6 +7,7 @@ class Notification
   private $con;
 
 
+  //this is the constructor for the Notification class, it accepts the connection and the username of the current user.
   public function __construct($con,$user)
   {
 
@@ -14,12 +15,16 @@ class Notification
     $this->user_obj = new User($con,$user);
   }
 
+  //this allows the user to obtain the unread notifications
+
   public function getUnreadNumber()
   {
     $userLoggedIn = $this->user_obj->getUsername();
     $query = mysqli_query($this->con, "SELECT * FROM notifications WHERE viewed = 'no' AND user_to = '$userLoggedIn'");
     return mysqli_num_rows($query);
   }
+
+  //this allows the system to insert notifications into the inbox of the different users whenever an event happens.
 
   public function insertNotification($post_id, $user_to, $type)
   {
@@ -50,6 +55,9 @@ class Notification
 
     $insert_query = mysqli_query($this->con, "INSERT INTO notifications VALUES ('', '$user_to', '$userLoggedIn', '$message', '$link', '$date_time', 'no', 'no')");
   }
+
+
+  //this function retrieves all the latest notifications which are not viewed
 
   public function getMyNotifications()
   {

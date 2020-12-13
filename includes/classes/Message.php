@@ -2,13 +2,14 @@
   /**
    *
    */
-   // Esta es la clase para todo lo relativo a los posts que se realizan, incluidos sus comentarios
+   // This is the class relative to the messages, all functions are included in this class
   class Message
   {
     private $user_obj;
     private $con;
     private $userLoggedIn;
 
+    // This is the constructor that accepts the connection and the username
     public function __construct($con,$user)
     {
       $this->userLoggedIn = $user;
@@ -16,6 +17,8 @@
       $this->user_obj = new User($con,$user);
     }
 
+
+    // this function checks if an user exists to retrieve the results into messages.php
     public function getUserIfExists($user_to_find)
     {
       $query = mysqli_query($this->con, "SELECT * FROM users WHERE user_name = '$user_to_find' OR first_name = '$user_to_find'");
@@ -28,6 +31,8 @@
         return "nothing";
       }
     }
+
+    //this function checks if an user exists to retrieve the results into find.php
 
     public function getUserIfExistsProfile($user_to_find)
     {
@@ -43,6 +48,7 @@
     }
 
 
+    //this functions retrieves the latest user so that when in messages.php we can obtain the last chat user used open
     public function getMostRecentUser()
     {
       $userLoggedIn = $this -> user_obj -> getUsername();
@@ -64,6 +70,7 @@
       }
     }
 
+    //this function as its name indicates helps the user to post a message into the database
     public function sendMessage($user_to, $body, $date)
     {
       if(strlen($body)>0){
@@ -73,6 +80,7 @@
       }
     }
 
+    //this functions retrieves all the messages in the inbox for the user
     public function getMessages($otherUser){
       $userLoggedIn = $this->user_obj->getUsername($otherUser);
       $data = "";
@@ -93,6 +101,8 @@
       return $data;
     }
 
+
+    //this gets the last communication the user did, and retrieves the informtion into messages.php
     public function getLatestMessage($userLogged, $user_to)
     {
       $details_array = [];
@@ -102,7 +112,7 @@
       $row = mysqli_fetch_array($query);
       $sent_by = ($row['user_to'] == $userLogged) ? "They said: " : "You said: ";
 
-      //Date Diff
+      //Date Diff, this will help us getting how many days, hours or minutes ago a message was sent.
 
       $date_time_now = date("Y-m-d H:i:s");
       $date_start = new DateTime($row['date']);
@@ -158,6 +168,7 @@
       return $details_array;
     }
 
+    // this returns all the messages information for the user and retrieves the information into messages.php
     public function getConvos()
     {
       $userLoggedIn = $this -> user_obj -> getUsername();
