@@ -113,9 +113,11 @@
       $sent_by = ($row['user_to'] == $userLogged) ? "They said: " : "You said: ";
 
       //Date Diff, this will help us getting how many days, hours or minutes ago a message was sent.
+      $date_added_message = $row['date'];
 
+      $date_added_msj = date_format($date_added_message,"Y-m-d H:i:s");
       $date_time_now = date("Y-m-d H:i:s");
-      $date_start = new DateTime($row['date']);
+      $date_start = new DateTime($date_added_msj);
       $date_end = new DateTime($date_time_now);
       $interval = $date_start->diff($date_end);
 
