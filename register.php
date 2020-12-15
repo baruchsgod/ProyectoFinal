@@ -18,6 +18,8 @@ require 'includes/handlers/register_handler.php';
         <img class="imagen" src="assets/images/logo_transparent.png" alt="the facebook">
         Register your information
       </div>
+
+      <!-- this is the form that will be shown to enter a new user with its erros if they happen -->
       <form class="" action="register.php" method="post">
 
         <input class="" type="text" name="reg_fname" placeholder="First Name" value="<?php

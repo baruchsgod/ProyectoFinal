@@ -5,7 +5,7 @@ include("includes/classes/Post.php");
 
 
  ?>
-
+<!-- this is the html page that will show all the friend requests that an user received -->
  <div class="main_column column" id="main_column">
    <h4 class="title_friend_request">Friend Request</h4>
    <?php

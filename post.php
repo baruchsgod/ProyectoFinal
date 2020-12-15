@@ -9,10 +9,11 @@ if(isset($_GET['id'])){
   $post_id = $_GET['id'];
   $action = $_GET['action'];
   $notification_id = $_GET['notification'];
-  $query = mysqli_query($con, "SELECT * FROM posts WHERE id = '$post_id'");
+  $query = mysqli_query($con, "SELECT * FROM posts WHERE id = '$post_id'"); //finds the correct post id
 
   $details = mysqli_fetch_array($query);
 
+  //this will let the user know what action is related to one post from the notification stand point
   $query_notifications = mysqli_query($con, "SELECT * FROM notifications WHERE id = '$notification_id'");
   $noti = mysqli_fetch_array($query_notifications);
   if($action == 1){
@@ -30,6 +31,7 @@ if(isset($_GET['id'])){
 
  ?>
 
+<!-- this part contains the generic image of the user with the number of likes and posts -->
  <div class="users column">
    <a href="<?php echo $userLoggedIn; ?>">
 
@@ -53,6 +55,7 @@ if(isset($_GET['id'])){
    </div>
  </div>
 
+<!-- this will display a table with the notification information -->
  <div class="main_post column">
    <h3>This is the post that <?php echo $title_details;?> </h3>
    <table class="table table-bordered table-dark">

@@ -62,14 +62,17 @@ if(isset($_POST['register_button'])){
     array_push($error_array, "Emails dont match<br>");
   }
 
+  //checks if name is between 2 and 35 characters long
   if(strlen($fname)>35 || strlen($fname)<2){
     array_push($error_array, "Your first name must be between 2 and 35 characters<br>");
   }
 
+ //checks if last name is between 2 and 45 characters long
   if(strlen($lname)>45 || strlen($lname)<2){
     array_push($error_array, "Your last name must be between 2 and 45 characters<br>");
   }
 
+  //checks if password entered match one an other
   if($password != $password2){
     array_push($error_array, "Your passwords do not match<br>");
   }else{
@@ -78,6 +81,8 @@ if(isset($_POST['register_button'])){
     }
   }
 
+
+  //checks the length of the password
   if(strlen($password)>30 || strlen($password)<5){
     array_push($error_array, "Your password must be between 5 and 30 characters<br>");
   }
@@ -90,6 +95,7 @@ if(isset($_POST['register_button'])){
 
     $i=0;
 
+    //this while loop checks if the initial assigned username exists, and if it does it adds one more number to the name and checks again into the database.
     while(mysqli_num_rows($u_check)!=0){
       $i++;
       $username = $username . $i;
@@ -104,10 +110,11 @@ if(isset($_POST['register_button'])){
       $profile_pic = "assets/images/profile_pics/defaults/profile_2.jpg";
     }
 
-    $query = mysqli_query($con,"call insert_User('','$fname','$lname','$username','$em','$password','$date','$profile_pic','0','0','no','')");
+    $query = mysqli_query($con,"call insert_User('','$fname','$lname','$username','$em','$password','$date','$profile_pic','0','0','no','')"); //Stored procedure that inserts data into the database
 
     array_push($error_array,"<span style='color:#14C800'>You are all set! Go ahead and login!</span>");
 
+    //session variables to recreate the previous value of the input tags from register.php
     $_SESSION['reg_fname'] = "";
     $_SESSION['reg_lname'] ="";
     $_SESSION['reg_email'] ="";

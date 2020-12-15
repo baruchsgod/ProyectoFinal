@@ -12,6 +12,7 @@
     include("includes/classes/Post.php");
     include("includes/classes/Notification.php");
 
+    //checks if user was properly logged in
     if(isset($_SESSION['username'])){
       $userLoggedIn = $_SESSION['username'];
       $userDetails = mysqli_query($con, "SELECT * FROM users WHERE user_name = '$userLoggedIn'");
@@ -20,12 +21,13 @@
       header("location:index.php");
     }
 
-    //Obtiene ID como parametro
+    //gets the parameter id
 
     if(isset($_GET['post'])){
       $post=$_GET['post'];
     }
 
+    //gets likes based in the parameter id
     $get_likes = mysqli_query($con,"SELECT likes,added_by FROM posts WHERE id='$post'");
     $row = mysqli_fetch_array($get_likes);
     $total_likes = $row['likes'];
@@ -36,7 +38,7 @@
     $total_user_likes = $row['num_likes'];
 
 
-    //Boton para dar Like
+    //Botton to provide likes
 
     if(isset($_POST['Like'])){
       $total_likes++;
@@ -53,7 +55,7 @@
         $notification-> insertNotification($post, $user_liked, "Like");
       }
     }
-    //Boton para dar unlike
+    //sets the unlike
 
     if(isset($_POST['Unlike'])){
       $total_likes--;
@@ -63,11 +65,12 @@
       $insert_user_like = mysqli_query($con, "DELETE FROM likes WHERE username = '$userLoggedIn' AND post_id = '$post' ");
     }
 
-    //Buscar likes previos
+    //Search for previos likes
 
     $check_likes = mysqli_query($con, "SELECT * FROM likes WHERE username='$userLoggedIn' AND post_id='$post'");
     $num_rows = mysqli_num_rows($check_likes);
 
+    //this section below is included in the iframe that heads to the home.php
     if($num_rows > 0){
       echo "<form action='likes.php?post=".$post . "' method='POST'>
               <input type='submit' class='comment_like' name='Unlike' value='Unlike' />

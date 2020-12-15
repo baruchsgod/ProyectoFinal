@@ -3,6 +3,7 @@
   require 'config/config.php';
 
 
+  //if user is properly logged it will get into the home.php otherwise it will head it back to the login page
   if(isset($_SESSION['username'])){
     $userLoggedIn = $_SESSION['username'];
     $userDetails = mysqli_query($con, "SELECT * FROM users WHERE user_name = '$userLoggedIn'");
@@ -31,7 +32,7 @@
     <nav>
 
 
-
+<!-- this is the navigation bar -->
       <a href="<?php echo $userLoggedIn; ?>">
         <?php
            echo $userArray['first_name'];

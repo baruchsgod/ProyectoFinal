@@ -5,10 +5,11 @@
  include("includes/classes/User.php");
  include("includes/classes/Post.php");
 
+//post procedure to change the profiles photo
  if(isset($_POST['post_text'])){
    $post = new Post($con,$userLoggedIn);
    $post -> submitPost($_POST['post_text'],"none");
-   header("Location:home.php");
+   header("Location:home.php"); //head to home.php once the photo change is done
  }
 
 
@@ -29,6 +30,8 @@
     <title>Hello, world!</title>
   </head>
   <body>
+
+    <!-- this part contains the generic image of the user with the number of likes and posts -->
     <div class="users column">
       <a href="<?php echo $userLoggedIn; ?>">
 
@@ -52,6 +55,8 @@
       </div>
     </div>
 
+
+    <!-- section in which the option to uploads the picture is shown -->
     <div class="main_post column ">
 
 
@@ -68,6 +73,8 @@
   </form>
 
   <?php
+
+  //this post request will upload and change the profile picture
   if(isset($_POST['subir'])){
      $ruta = "imagenes/";
      $fichero = $ruta.basename($_FILES['imagen']['name']);

@@ -16,6 +16,7 @@ if(isset($_POST['btnFindUser'])){
 }
  ?>
 
+ <!-- this part contains the generic image of the user with the number of likes and posts -->
  <div class="users column">
    <a href="<?php echo $userLoggedIn; ?>">
 
@@ -42,13 +43,14 @@ if(isset($_POST['btnFindUser'])){
  <div class="main_post column" id="main_column">
    <h4>Find User</h4>
    <br>
+   <!-- form to submit a request to find an user -->
    <form class="" action="" method="POST">
      <input class="form-control adjust_input" type="text" name="txtUsername" value="">
      <button class="btn btn-info btn-lg adjust_button" type="submit" name="btnFindUser">Find</button>
    </form>
 
    <?php
-
+   //this is the result of the search
    if(isset($found)){
      echo $found;
    }

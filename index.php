@@ -16,6 +16,7 @@
   <title>Hello, world!</title>
 </head>
 
+<!-- this is the login page and the first page is shown to the user -->
 <body>
   <div class="contenedor">
     <div class="row justify-content-center pt-5 mt-5 m-1">
@@ -35,7 +36,7 @@
           <div class="form-group mx-sm-5">
             <input type="password" class="form-control" name="userpassword" placeholder="Enter your password" autocomplete="off" required>
           </div>
-          <!--la clase padre del boton lleva "mx-sm-5" da tamano de la caja-->
+          <!--parent class of botton has "mx-sm-5" and provides the size of the box-->
           <div class="form-group mx-sm-5 pb-3 text-center">
             <input type="submit" class="btn btn-info center" name="userButton" value="INGRESAR">
 

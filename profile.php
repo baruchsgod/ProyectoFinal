@@ -36,6 +36,7 @@
 
 ?>
 
+<!-- this part contains the generic image of the user with the number of likes and posts and this one also has friends in common-->
     <div class="profile_left">
       <img src="<?php echo $user_array['profile_pic'];?>" >
       <div class="profile_info">
@@ -51,6 +52,8 @@
             ?></p>
       </div>
 
+
+
       <form class="" action="<?php echo $username;?>" method="post">
         <?php
           $new_user_obj = new User($con, $username);
@@ -59,7 +62,7 @@
           }
 
           $user_logged = new User($con, $userLoggedIn);
-
+          // this section will determine the correct botton to show if an user is not friend or gives the possibility to remove friends
           if($userLoggedIn != $username){
             if($user_logged->isFriend($username)){
               echo "<input type='submit' name='remove_Friend' class='btn btn-lg btn-danger' value='Remove Friend'/>";
@@ -76,7 +79,7 @@
       </form>
       <input type="submit" class="btn btn-primary btn-lg format" data-toggle="modal" data-target="#myModal" name="" value="Post Something">
 
-      <!-- Modal -->
+      <!-- Modal, this is the pop up box that lets to post something in the users profile -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -110,6 +113,8 @@
     </div>
     <div class="profile_main">
           <?php
+
+          //this gets the user posts to show in the profile
             if(isset($_GET['profile_username'])){
               $username1 = $_GET['profile_username'];
               $my_posts = new Post($con,$userLoggedIn);
@@ -121,6 +126,7 @@
 
     </div>
     <script>
+    //verifies is not empty before submitting
       function notEmpty(){
         var body = document.getElementById('post_body').value;
         var len = body.length;

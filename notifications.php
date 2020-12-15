@@ -14,7 +14,7 @@ if(isset($_GET['user'])){
 
 
  ?>
-
+<!-- this part contains the generic image of the user with the number of likes and posts -->
  <div class="users column">
    <a href="<?php echo $userLoggedIn; ?>">
 
@@ -38,6 +38,7 @@ if(isset($_GET['user'])){
    </div>
  </div>
 
+<!-- table that will display all of the notifications -->
  <div class="main_post column">
    <table class="table table-bordered table-dark">
   <thead>
@@ -69,7 +70,7 @@ if(isset($_GET['user'])){
         }
         $id_notification = $row['id'];
 
-        $link = $link . "&notification=".$id_notification; 
+        $link = $link . "&notification=".$id_notification;
         echo '<td><a href="'.$link.'"><button class="btn btn-info">Notification</button></a></td>';
         echo '</tr>';
       }

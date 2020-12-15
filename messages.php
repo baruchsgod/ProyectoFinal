@@ -36,6 +36,7 @@
 
  ?>
 
+<!-- this part contains the generic image of the user with the number of likes and posts -->
  <div class="users column">
    <a href="<?php echo $userLoggedIn; ?>">
 
@@ -59,6 +60,7 @@
    </div>
  </div>
 
+
  <div class="main_post column" id="main_column">
    <?php
       if($user_to != 'New'){
@@ -70,7 +72,7 @@
         echo "<h4>New Message</h4>";
       }
     ?>
-
+    <!-- this is where we can see the whole message history -->
     <div class="message_post">
       <form class="" action="" method="POST">
         <?php
@@ -99,6 +101,7 @@
 
  </div>
 
+  <!-- this section contains the open chats with different users -->
  <div class="secondary_posts column">
    <h4>Conversations</h4>
    <div class="loaded_conversations">

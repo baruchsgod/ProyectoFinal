@@ -5,6 +5,7 @@
   include("includes/classes/Post.php");
   include("includes/classes/Notification.php");
 
+  //this isset function will determine if an user is properly logged in
   if(isset($_SESSION['username'])){
     $userLoggedIn = $_SESSION['username'];
     $userDetails = mysqli_query($con, "SELECT * FROM users WHERE user_name = '$userLoggedIn'");
@@ -23,6 +24,7 @@
   <body>
 
     <script>
+    //this function will hide and show the comments section
       function toggle(){
         var post_id = document.getElementById("comments");
 
@@ -34,6 +36,8 @@
       }
     </script>
     <?php
+
+      //this will retreive the correct post to add the comment to
       if(isset($_GET['post'])){
         $post = $_GET['post'];
         $my_query = mysqli_query($con,"SELECT added_by, user_to FROM posts WHERE id='$post'");
@@ -42,6 +46,7 @@
         $posted_to = $row['added_by'];
         $user_to = $row['user_to'];
 
+        //this post function inserts the comment with the reference of the correct post id
         if(isset($_POST['postComment'.$post])){
           $post_body = $_POST['post_body'];
           $post_body = mysqli_escape_string($con, $post_body);
@@ -81,6 +86,7 @@
       }
      ?>
 
+     <!-- this is the part of the iframe in home.php retrieved from the Post class -->
      <form id="comment_form" action="comments.php?post=<?php echo $post?>" name="postComment<?php echo $post?>" method="post">
        <textarea name="post_body"></textarea>
        <input class="btn btn-lg btn-info" type="submit" name="postComment<?php echo $post ?>" value="Post">
@@ -88,6 +94,9 @@
      </form>
 
      <?php
+
+      //the next lines of code retrieves all the comments done for a particular post
+
         $get_comment = mysqli_query($con, "SELECT * FROM post_comments WHERE post_id = '$post'");
         $count = mysqli_num_rows($get_comment);
 
@@ -106,6 +115,7 @@
             $date_end = new DateTime($date_time_now);
             $interval = $date_start->diff($date_end);
 
+            //determines how much time ago a comment was made
             if($interval->y >=1){
               if($interval->y==1){
                 $time_message = $interval->y . " year ago";
@@ -152,6 +162,7 @@
 
             $user_obj = new User($con, $posted_by);
             ?>
+            <!-- these are the comments shown in the home.php -->
             <div class="comment_section">
               <a href="<?php echo $posted_by?>" target="_parent"><img src="<?php echo $user_obj -> getProfilePic()?>" height="30" /></a>
               <a href="<?php echo $posted_by?>" target="_parent"><?php echo $user_obj-> getFirstAndLastName()?></a>

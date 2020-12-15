@@ -2,13 +2,15 @@
   /**
    *
    */
-   // Esta es la clase para todo lo relativo a los posts que se realizan, incluidos sus comentarios
+   // This class will contain everything related to posts on the profile, in the walls and the comments
   class Post
   {
     private $user_obj;
     private $con;
     private $userLoggedIn;
     private $notifications;
+
+    //this is the constructor of the Post class
 
     public function __construct($con,$user)
     {
@@ -18,19 +20,22 @@
 
     }
 
+    //this is the function to submit a post
     public function submitPost($body, $user_to)
     {
-      $body = strip_tags($body);
-      $body = mysqli_real_escape_string($this->con, $body);
-      $body = str_replace('\r\n','\n',$body);
-      $body = nl2br($body);
-      $check_query = preg_replace('/\s+/','',$body);
 
-      if($check_query!=""){
+      //this is are the variables we will submit into the database
+      $body = strip_tags($body); //strip tags remove tags from the text received
+      $body = mysqli_real_escape_string($this->con, $body); // removes any special character
+      $body = str_replace('\r\n','\n',$body); //add the line breaks
+      $body = nl2br($body);//insert line breaks
+      $check_query = preg_replace('/\s+/','',$body); //finishes clearing the query to upload
+
+      if($check_query!=""){ // verifies that the query is not empty
         $date_added = date("Y-m-d H:i:s");
         $added_by = $this->user_obj->getUsername();
 
-        if($user_to == $added_by){
+        if($user_to == $added_by){ //if both users are the same it will set variable $user_to to 'none'
           $user_to = "none";
         }
 
@@ -46,7 +51,7 @@
         if($user_to != 'none'){
 
 
-          $userName = $this->user_obj->getUsername();
+          $userName = $this->user_obj->getUsername(); //gets Name of the user inserting notification
           $userLoggedInName = $this->user_obj->getFirstAndLastName();
 
           $date_time = date("Y-m-d H:i:s");
@@ -65,16 +70,18 @@
       }
     }
 
+
+    //This function selects all the posts from the user's friend to show them into the wall
     public function getPostsFriends()
     {
       $str = ""; // Inicializar variable que contendra el String
       $data = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='NO' ORDER BY id DESC");
 
       WHILE($row=mysqli_fetch_array($data)){
-        $id = $row['id'];
-        $body = $row['body'];
-        $added_by = $row['added_by'];
-        $user_to = $row['user_to'];
+        $id = $row['id']; //this variable holds the post id
+        $body = $row['body']; //this variable holds the post message
+        $added_by = $row['added_by']; //this variable holds the person who added the post
+        $user_to = $row['user_to']; //this variable holds the person who intended the post
         $date_added = $row['date_added'];
 
         if($user_to=="none"){
@@ -87,12 +94,12 @@
 
         $userClosed = new User($this->con, $added_by);
         if($userClosed->isClosed()){
-          continue;
+          continue; //if the user is closed due to a closed account, it will not include it in the result
         }
 
         $friend_obj = new User($this->con,$this->userLoggedIn);
 
-        if($friend_obj->isFriend($added_by)){
+        if($friend_obj->isFriend($added_by)){ //check if user found is friend of the current user doing the search
 
           if($this->userLoggedIn== $added_by){
             $delete_button = "<button class='btn btn-danger boton' id='post$id' type='submit' onClick='deletePost(this)' value='$id' >X</button>";
@@ -106,7 +113,7 @@
         $profile_pic = $user_row['profile_pic'];
 
         ?>
-        <script>
+        <script> //this is the javascript function that toggles the comments space to hide and show them
         function toggle<?php echo $id;?>(){
 
           var target = $(event.target);
@@ -135,6 +142,7 @@
         $date_end = new DateTime($date_time_now);
         $interval = $date_start->diff($date_end);
 
+        //The next code determines how many minutes ago a post was done
         if($interval->y >=1){
           if($interval->y==1){
             $time_message = $interval->y . " year ago";
@@ -177,6 +185,7 @@
           $time_message = "less than a minute ago";
         }
 
+        //this is the string that will show into home.php once the post function is completed
         $str.= "<div class='container-fluid borders' onClick='javascript:toggle$id()'>
                   <div class='posts'>
                     <img src='$profile_pic' width='75'>
@@ -201,8 +210,9 @@
                 </div>";
               }
               ?>
-              <script>
 
+              <script>
+                //this javacript function submits the form related to deletions
                   function deletePost(post){
                     var id = post.value;
                     var url = "includes/handlers/delete_post.php?post_id="+id;
@@ -238,6 +248,7 @@
       echo $str;
     }
 
+    //this function retrieves all the posts done by the user to show them into the profile
     public function getMyPosts($user_profile)
     {
       $str = ""; // Inicializar variable que contendra el String
@@ -246,6 +257,8 @@
       $data = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='NO' AND (added_by = '$userPosts' AND (user_to = 'none' OR user_to='$userPosts'))  ORDER BY id DESC");
 
       WHILE($row=mysqli_fetch_array($data)){
+
+        //same variables as previous function
         $id = $row['id'];
         $body = $row['body'];
         $added_by = $row['added_by'];
@@ -254,7 +267,7 @@
 
         $userClosed = new User($this->con, $added_by);
         if($userClosed->isClosed()){
-          continue;
+          continue; //if it is closed will not be included
         }
 
           if($this->userLoggedIn == $added_by){
@@ -271,6 +284,7 @@
 
         ?>
         <script>
+        //toggles the comments to hide and show
         function toggle<?php echo $id;?>(){
 
           var target = $(event.target);
@@ -297,6 +311,7 @@
         $date_end = new DateTime($date_time_now);
         $interval = $date_start->diff($date_end);
 
+        //Determines how much time ago a post was done
         if($interval->y >=1){
           if($interval->y==1){
             $time_message = $interval->y . " year ago";
@@ -339,6 +354,7 @@
           $time_message = "less than a minute ago";
         }
 
+        //this is the string that will show into the profile of the user
         $str.= "<div class='container-fluid borders' onClick='javascript:toggle$id()'>
                   <div class='posts'>
                     <img src='$profile_pic' width='75'>
@@ -364,7 +380,7 @@
 
               ?>
               <script>
-
+              //this function submits the form to delete
                   function deletePost(post){
                     var id = post.value;
                     var url = "includes/handlers/delete_post.php?post_id="+id;

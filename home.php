@@ -37,6 +37,8 @@
       $num_notifications = $notifications->getUnreadNumber();
 
     ?>
+
+    <!-- this part contains the generic image of the user with the number of likes and posts -->
     <div class="users column">
       <a href="<?php echo $userLoggedIn; ?>">
 
@@ -60,6 +62,7 @@
       </div>
     </div>
 
+        <!-- this is the main section where posts from friends, own posts and comments are show -->
         <div class="main_post column">
           <form class="post_form" action="home.php" method="post">
             <textarea class="" name="post_text" id="post_text" placeholder="Got something to say?"></textarea>
@@ -71,6 +74,8 @@
           $posts->getPostsFriends();
           ?>
         </div>
+
+        <!-- this is the news API -->
         <div class="secondary_posts column">
           <div id="myCarousel" class="carousel slide"
                 data-ride="carousel">

@@ -2,11 +2,13 @@
   /**
    *
    */
+
+   //this is the user class
   class User
   {
     private $user;
     private $con;
-
+    //this is the constructor of the class that will take the connection and the username
     public function __construct($con,$user)
     {
 
@@ -16,6 +18,7 @@
 
     }
 
+    //Gets first and lastname of the user logged in.
     public function getFirstAndLastName()
     {
       $username = $this->user['user_name'];
@@ -24,6 +27,7 @@
       return $row['first_name']." ".$row['last_name'];
     }
 
+    //Gets path of picture of the user logged in.
     public function getProfilePic()
     {
       $username = $this->user['user_name'];
@@ -32,6 +36,7 @@
       return $row['profile_pic'];
     }
 
+    //Gets friends of the user logged in.
     public function getFriendArray()
     {
       $username = $this->user['user_name'];
@@ -40,6 +45,7 @@
       return $row['friend_array'];
     }
 
+    //Gets quantity of posts of the user logged in.
     public function getNumPosts()
     {
         $username = $this->user['user_name'];
@@ -48,11 +54,13 @@
         return $row['num_posts'];
     }
 
+    //Gets name of the user logged in.
     public function getUsername()
     {
       return $this->user['user_name'];
     }
 
+    //Determines if an user is closed
     public function isClosed()
     {
       $username = $this->user['user_name'];
@@ -65,6 +73,7 @@
       }
     }
 
+    //This functions is used in the post class to determine if an user is friend or not of logged in user to retrieve the post.
     public function isFriend($user_to_check)
     {
       $userComma = $user_to_check;
@@ -75,6 +84,7 @@
       }
     }
 
+    //This function helps to retrieve the friend requests of the user logged in
     public function didReceiveRequest($user_from)
     {
       $user_to = $this->user['user_name'];
@@ -86,6 +96,7 @@
       }
     }
 
+    //this function determines if a friend request was sent
     public function didSendRequest($user_to)
     {
       $user_from = $this->user['user_name'];
@@ -97,6 +108,7 @@
       }
     }
 
+    //this function will remove the friend from the user logged in friend lists
     public function removeFriend($user_to_remove)
     {
       $loggedIn_user = $this->user['user_name'];
@@ -113,12 +125,14 @@
       $removeUser = mysqli_query($this->con, "UPDATE users SET friend_array = '$new_users_friend_list' WHERE user_name = '$user_to_remove' ");
     }
 
+    //this function will send friend requests
     public function sendRequest($user_to)
     {
       $user_from = $this->user['user_name'];
       $query = mysqli_query($this->con, "INSERT INTO friend_requests VALUES ('','$user_to','$user_from')");
     }
 
+    //this function will display the amount of mutual friends user logged in has with any other user
     public function getMutualFriends($user_to_check)
     {
       $mutual_friends = 0;
