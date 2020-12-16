@@ -27,14 +27,14 @@ require 'includes/handlers/register_handler.php';
             echo $_SESSION['reg_fname'];
           };
         ?>" required>
-        <?php if(in_array("Your first name must be between 2 and 35 characters<br>",$error_array)) echo "<br>Your first name must be between 2 and 35 characters<br>"?>
+        <?php if(in_array("Your first name must be between 2 and 35 characters<br>",$error_array)) echo "<br><p class='errors'>Your first name must be between 2 and 35 characters</p><br>"?>
         <br>
         <input class="" type="text" name="reg_lname" placeholder="Last Name" value="<?php
           if(isset($_SESSION['reg_lname'])){
             echo $_SESSION['reg_lname'];
           }
         ?>" required>
-        <?php if(in_array("Your last name must be between 2 and 45 characters<br>",$error_array)) echo "<br>Your last name must be between 2 and 45 characters<br>"?>
+        <?php if(in_array("Your last name must be between 2 and 45 characters<br>",$error_array)) echo "<br><p class='errors'>Your last name must be between 2 and 45 characters</p><br>"?>
         <br>
         <input type="email" name="reg_email" placeholder="Email" value="<?php
           if(isset($_SESSION['reg_email'])){
@@ -47,16 +47,16 @@ require 'includes/handlers/register_handler.php';
             echo $_SESSION['reg_email2'];
           }
         ?>" required>
-        <?php if(in_array("Email already exists<br>",$error_array)) {echo "<br>Email already exists<br>";}
-        elseif(in_array("Email format is incorrect<br>",$error_array)) echo "<br>Email format in incorrect<br>";
-        elseif(in_array("Emails dont match<br>",$error_array)) echo "<br>Emails dont match<br>";?>
+        <?php if(in_array("Email already exists<br>",$error_array)) {echo "<br><p class='errors'>Email already exists</p><br>";}
+        elseif(in_array("Email format is incorrect<br>",$error_array)) echo "<br><p class='errors'>Email format in incorrect</p><br>";
+        elseif(in_array("Emails dont match<br>",$error_array)) echo "<br><p class='errors'>Emails dont match</p><br>";?>
         <br>
         <input type="password" name="reg_password" placeholder="Password" value="" required>
         <br>
         <input type="password" name="reg_password2" placeholder="Confirm Password" value="" required>
-        <?php if(in_array("Your passwords do not match<br>",$error_array)) {echo "<br>Your passwords do not match<br>";}
-        elseif(in_array("Your password only takes letter or numbers<br>",$error_array)) echo "<br>Your password only takes letter or numbers<br>";
-        elseif(in_array("Your password must be between 5 and 30 characters<br>",$error_array)) echo "<br>Your password must be between 5 and 30 characters<br>";?>
+        <?php if(in_array("Your passwords do not match<br>",$error_array)) {echo "<br><p class='errors'>Your passwords do not match</p><br>";}
+        elseif(in_array("Your password only takes letter or numbers<br>",$error_array)) echo "<br><p class='errors'>Your password only takes letter or numbers</p><br>";
+        elseif(in_array("Your password must be between 5 and 30 characters<br>",$error_array)) echo "<br><p class='errors'>Your password must be between 5 and 30 characters</p><br>";?>
         <br>
       </br>
       <div class="text-center">
